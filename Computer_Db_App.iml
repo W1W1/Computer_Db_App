@@ -9,7 +9,6 @@
         <webroots>
           <root url="file://$MODULE_DIR$/web" relative="/" />
         </webroots>
-        <sourceRoots />
       </configuration>
     </facet>
     <facet type="hibernate" name="Hibernate">
@@ -26,6 +25,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="Hibernate 4.2.2-4.2.2" level="project" />
+    <orderEntry type="library" name="Hibernate 4.2.2-4.2.2" level="project" />
+    <orderEntry type="library" name="javax.servlet:servlet-api:2.5" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.39-bin" level="project" />
   </component>
 </module>

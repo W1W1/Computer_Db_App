@@ -44,7 +44,7 @@ public class ManageComputer {
             session.close();
         }
     }
-    public static void listComputer() {
+    public static String listComputer() {
         try {
             factory = new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
@@ -59,13 +59,14 @@ public class ManageComputer {
             List computer = session.createQuery(str).list();
             for (Iterator iterator = computer.iterator(); iterator.hasNext(); ) {
                 Computer computer1 = (Computer) iterator.next();
-                System.out.println(computer1);
+                str+=computer1;
             }
-
+            return str;
 
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
+            return "";
         } finally {
             session.close();
         }
