@@ -26,23 +26,29 @@ public class Main {
 	
 	public static void main(String[] args){
 
-		ArrayList<Computer> computers = (ArrayList)ManageComputer.listComputer();
-		for (Computer comp :
-				computers) {
-			System.out.println(comp);
-		}
-		Computer cpu;
-		try {
-			cpu = SqlData.GetComputer(1);
-			System.out.println(cpu);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		ManageCompany.listCompany();
-		ManageCompany.searchCompany("a");
-		Ajout_Computer aj = new Ajout_Computer();
-		aj.utilisation();
+
+		int id = 1;
+		Computer computer = ManageComputer.getComputer(id);
+		System.out.printf(String.valueOf(computer));
+
+
+		//		ArrayList<Computer> computers = (ArrayList)ManageComputer.listComputer();
+//		for (Computer comp :
+//				computers) {
+//			System.out.println(comp);
+//		}
+//		Computer cpu;
+//		try {
+//			cpu = SqlData.GetComputer(1);
+//			System.out.println(cpu);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		ManageCompany.listCompany();
+//		ManageCompany.searchCompany("a");
+//		Ajout_Computer aj = new Ajout_Computer();
+//		aj.utilisation();
 
 	}
 }

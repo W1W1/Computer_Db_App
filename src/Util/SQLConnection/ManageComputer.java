@@ -35,7 +35,6 @@ public class ManageComputer {
             List computer = session.createQuery(str + id).list();
             for (Iterator iterator = computer.iterator(); iterator.hasNext(); ) {
                 computer1 = (Computer) iterator.next();
-
             }
             return computer1;
 

@@ -1,8 +1,8 @@
-<%--
+<%@ page import="Util.Computer" %><%--
   Created by IntelliJ IDEA.
   User: Richard-DT
-  Date: 07/09/2016
-  Time: 21:18
+  Date: 08/09/2016
+  Time: 00:45
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page pageEncoding="UTF-8" %>
@@ -58,19 +58,32 @@
             <!--Image, description du pokemon, taille, poids et types-->
             <div class="row">
                 <div class="col-sm-12">
-                    <p>
-                    <p>Ceci est une page générée depuis une JSP.</p>
-                    <%
-                            String attribut = (String) request.getAttribute("Servlet.test");
-                            out.println(attribut);
-                        %>
-                    </p>
+                    <%--<div>--%>
+                        <%--pzpepcv--%>
+                        <%--<%--%>
+                            <%--String attribut = ((Computer) request.getAttribute("computer")).toString();--%>
+                            <%--out.println(attribut);--%>
+                        <%--%>--%>
+                    <%--</div>--%>
+                    <div class="informations-pokemon flex-container  slideanim">
+                        <div class="flex-container">
+                            <div class="flex-item enonce">Nom :</div>
+                            <div class="flex-item donnee">${ computer.name }</div>
+                        </div>
+                        <!--Separator pour que les deux items soient écartés d'un certain espacement-->
+                        <div class="separator-taille-poids"></div>
+
+                        <div class="flex-container">
+                            <div class="flex-item enonce">Company :</div>
+                            <div class="flex-item donnee">${ computer.company.name }</div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 
 
 </body>
-</html>

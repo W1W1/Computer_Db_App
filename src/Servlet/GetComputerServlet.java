@@ -1,3 +1,5 @@
+package Servlet;
+
 import Util.Computer;
 import Util.SQLConnection.ManageComputer;
 
@@ -6,24 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 /**
- * Created by Richard-DT on 07/09/2016.
+ * Created by Richard-DT on 08/09/2016.
  */
-public class test extends HttpServlet {
+public class GetComputerServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Computer> computers;
-        computers = ManageComputer.listComputer();
+        int id = 1;
+        Computer computer = ManageComputer.getComputer(id);
         String testMsg = "";
-        for (Computer comp :
-                computers) {
-            testMsg += comp;
-        }
-        request.setAttribute("test", testMsg);
-//        request.setAttribute("test", computers);
-        this.getServletContext().getRequestDispatcher("/WEB-INF/listComputer.jsp").forward(request, response);
+        request.setAttribute("computer", computer);
+//        request.setAttribute("Servlet.test", computers);
+        this.getServletContext().getRequestDispatcher("/WEB-INF/getComputer.jsp").forward(request, response);
     }
-
 }

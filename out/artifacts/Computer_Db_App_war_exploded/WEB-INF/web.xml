@@ -5,9 +5,22 @@
          version="3.1">
     <servlet>
         <servlet-name>test</servlet-name>
-        <servlet-class>test</servlet-class>
+        <servlet-class>Servlet.test</servlet-class>
 
-        <description>Ma première servlet de test.</description>
+        <description>Ma première servlet de Servlet.test.</description>
+
+        <init-param>
+            <param-name>auteur</param-name>
+            <param-value>Coyote</param-value>
+        </init-param>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>getComputer</servlet-name>
+        <servlet-class>Servlet.GetComputerServlet</servlet-class>
+
+        <description>Ma première servlet de Servlet.test.</description>
 
         <init-param>
             <param-name>auteur</param-name>
@@ -19,5 +32,7 @@
     <servlet-mapping>
         <servlet-name>test</servlet-name>
         <url-pattern>/listComputer</url-pattern>
+        <servlet-name>getComputer</servlet-name>
+        <url-pattern>/getComputer</url-pattern>
     </servlet-mapping>
 </web-app>

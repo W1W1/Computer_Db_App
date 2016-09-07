@@ -8,12 +8,12 @@
         <meta attribute="class-description">
             This class contains the employee detail.
         </meta>
-        <id name="id" type="long" column="id">
+        <id name="id" type="long" column="id" >
             <generator class="native"/>
         </id>
-        <property name="name" column="name" type="string"/>
-        <property name="introduced" column="introduced" type="java.util.Date"/>
-        <property name="discontinued" column="discontinued" type="java.util.Date"/>
-        <many-to-one name="company" column="company_id" class="Util.Company"/>
+        <property name="name" column="name" type="string" lazy="false"/>
+        <property name="introduced" column="introduced" type="java.util.Date" lazy="false"/>
+        <property name="discontinued" column="discontinued" type="java.util.Date" lazy="false"/>
+        <many-to-one name="company" column="company_id" class="Util.Company" lazy="false"/>
     </class>
 </hibernate-mapping>
