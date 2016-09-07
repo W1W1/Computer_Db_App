@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ManageCompany{
     private static SessionFactory factory;
-    public static void listCompany( ){
+    public static List<Company> listCompany( ){
         try{
             factory = new Configuration().configure().buildSessionFactory();
         }catch (Throwable ex) {
@@ -28,16 +28,18 @@ public class ManageCompany{
             List companies = session.createQuery("FROM Company ").list();
             for (Iterator iterator =companies.iterator(); iterator.hasNext();){
                 Company company = (Company) iterator.next();
-                System.out.println(company);
+//                System.out.println(company);
             }
+            return companies;
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
             e.printStackTrace();
+            return null;
         }finally {
             session.close();
         }
     }
-    public static void listCompany(int id) {
+    public static Company getCompany(int id) {
         try {
             factory = new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
@@ -46,19 +48,23 @@ public class ManageCompany{
         }
         Session session = factory.openSession();
         Transaction tx = null;
+        Company company = null;
         try {
             tx = session.beginTransaction();
             String str = "FROM Company";
-            List company = session.createQuery(str + id).list();
-            for (Iterator iterator = company.iterator(); iterator.hasNext(); ) {
-                Company company1 = (Company) iterator.next();
-                System.out.println(company1);
+            List companies = session.createQuery(str + id).list();
+            for (Iterator iterator = companies.iterator(); iterator.hasNext(); ) {
+                company = (Company) iterator.next();
+
+
             }
+            return company;
 
 
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
+            return null;
         } finally {
             session.close();
         }
@@ -100,7 +106,7 @@ public class ManageCompany{
             session.close();
         }
     }
-    public static void searchCompany(String search) {
+    public static List<Company> searchCompany(String search) {
         Session session = factory.openSession();
         Transaction tx = null;
         try {
@@ -112,9 +118,11 @@ public class ManageCompany{
                 Company company1 = (Company) iterator.next();
                 System.out.println(company1);
             }
+            return company;
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
+            return null;
         } finally {
             session.close();
         }
