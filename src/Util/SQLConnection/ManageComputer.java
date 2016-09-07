@@ -1,6 +1,7 @@
 package Util.SQLConnection;
 
 
+import Util.Company;
 import Util.Computer;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -18,7 +19,7 @@ import java.util.List;
 public class ManageComputer {
     private static SessionFactory factory;
 
-    public static void getComputer(int id) {
+    public static Computer getComputer(int id) {
         try {
             factory = new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
@@ -27,24 +28,27 @@ public class ManageComputer {
         }
         Session session = factory.openSession();
         Transaction tx = null;
+        Computer computer1=null;
         try {
             tx = session.beginTransaction();
             String str = "FROM Computer C where C.id =";
             List computer = session.createQuery(str + id).list();
             for (Iterator iterator = computer.iterator(); iterator.hasNext(); ) {
-                Computer computer1 = (Computer) iterator.next();
-                System.out.println(computer1);
-            }
+                computer1 = (Computer) iterator.next();
 
+            }
+            return computer1;
 
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
+            return null;
         } finally {
             session.close();
+
         }
     }
-    public static String listComputer() {
+    public static List<Computer> listComputer() {
         try {
             factory = new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
@@ -55,18 +59,18 @@ public class ManageComputer {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            String str = "FROM Computer";
-            List computer = session.createQuery(str).list();
+            String str ="";
+            List computer = session.createQuery("FROM Computer").list();
             for (Iterator iterator = computer.iterator(); iterator.hasNext(); ) {
                 Computer computer1 = (Computer) iterator.next();
                 str+=computer1;
             }
-            return str;
+            return computer;
 
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
-            return "";
+            return null;
         } finally {
             session.close();
         }
