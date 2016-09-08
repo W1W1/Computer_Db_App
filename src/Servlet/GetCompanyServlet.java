@@ -16,9 +16,13 @@ import java.util.List;
  * Created by Alex on 08/09/2016.
  */
 public class GetCompanyServlet extends HttpServlet {
+    public static int ID = 1;
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Company> companies;
-        int id = Integer.valueOf(request.getParameter("id"));;
+        int id = ID;
+        if (request.getParameter("id")!=null) {
+            id = Integer.valueOf(request.getParameter("id"));
+        }
         Company company = ManageCompany.getCompany(id);
         String testMsg = "";
         request.setAttribute("company", company);

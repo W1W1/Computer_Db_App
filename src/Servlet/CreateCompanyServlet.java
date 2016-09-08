@@ -44,41 +44,13 @@ public class CreateCompanyServlet extends HttpServlet {
         if ( form.getErreurs().isEmpty() ) {
             /* Si aucune erreur, alors input de l'entrep affichage de la fiche récapitulative */
             ManageCompany.addCompany(company);
-            response.sendRedirect(request.getContextPath() + VUE_SUCCES);
+            long id = ManageCompany.getLastCompanyId();
+            response.sendRedirect(request.getContextPath() + VUE_SUCCES +"?"+"id="+id);
         } else {
             /* Sinon, ré-affichage du formulaire de création avec les erreurs */
             this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
         }
     }
 
-
-
-
-
-
-
-
-    public void doPostOLDVERSION(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Company company = new Company();
-
-        String name = request.getParameter( "companyName" );
-
-        String message;
-
-        if (  name.trim().isEmpty() ) {
-            message = "Erreur - Veuillez donner un nom à l'entreprise à créer <br> <a href=\"createCompany.jsp\">Cliquez ici</a> pour accéder au formulaire de création d'une entreprise.";
-        } else {
-            message = "Entreprise créé avec succès !";
-        }
-
-        company.setName(name);
-
-        request.setAttribute( "company", company );
-        request.setAttribute( "message", message );
-
-        ManageCompany.addCompany(company);
-
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/getCompany.jsp" ).forward( request, response );
-    }
 }
 

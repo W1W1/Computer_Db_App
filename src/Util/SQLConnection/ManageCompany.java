@@ -6,6 +6,7 @@ import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
+import java.math.BigInteger;
 import java.util.Iterator;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class ManageCompany{
         Company company = null;
         try {
             tx = session.beginTransaction();
-            String str = "FROM Company";
+            String str = "FROM Company where id = ";
             List companies = session.createQuery(str + id).list();
             for (Iterator iterator = companies.iterator(); iterator.hasNext(); ) {
                 company = (Company) iterator.next();
@@ -102,6 +103,21 @@ public class ManageCompany{
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+    public static long getLastCompanyId() {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Long lastId = ((BigInteger) session.createSQLQuery("SELECT LAST_INSERT_ID()").uniqueResult()).longValue();
+            return lastId;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return 0;
         } finally {
             session.close();
         }
