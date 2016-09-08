@@ -88,9 +88,39 @@ public class ManageComputer {
             String str ="";
 
             org.hibernate.Query query = session.createQuery("FROM Computer");
+
             query.setFirstResult((page-1)*nbElements);
             query.setMaxResults(nbElements*(page));
             List computer = query.list();
+            for (Iterator iterator = computer.iterator(); iterator.hasNext(); ) {
+                Computer computer1 = (Computer) iterator.next();
+                str+=computer1;
+            }
+            return computer;
+
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return null;
+        } finally {
+            session.close();
+        }
+    }
+    public static List<Computer> listComputer(int companyId) {
+        try {
+            factory = new Configuration().configure().buildSessionFactory();
+        } catch (Throwable ex) {
+            System.err.println("Failed to create sessionFactory object." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            String str ="FROM Computer WHERE company_id="+companyId;
+
+            List computer = session.createQuery(str).list();
+
             for (Iterator iterator = computer.iterator(); iterator.hasNext(); ) {
                 Computer computer1 = (Computer) iterator.next();
                 str+=computer1;
