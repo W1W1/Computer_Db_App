@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import javax.management.Query;
+import java.math.BigInteger;
 import java.util.Iterator;
 import java.util.List;
 
@@ -167,6 +168,22 @@ public class ManageComputer {
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+    public static long getLastComputerId() {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Long lastId = ((BigInteger) session.createSQLQuery("SELECT LAST_INSERT_ID()").uniqueResult()).longValue();
+            return lastId;
+
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return 0;
         } finally {
             session.close();
         }

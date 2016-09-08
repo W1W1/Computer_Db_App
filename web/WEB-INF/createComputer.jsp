@@ -1,13 +1,10 @@
-<%--<%@ page import="Util.Company" %>--%>
-
 <%--
   Created by IntelliJ IDEA.
   User: Alex
   Date: 9/8/2016
-  Time: 9:40 AM
+  Time: 8:52 PM
   To change this template use File | Settings | File Templates.
 --%>
-
 <%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -15,7 +12,7 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Company Creation</title>
+    <title>Computer Creation</title>
     <!-- Material Design fonts -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 
@@ -61,14 +58,35 @@
             <!--Informations sur l'entreprise-->
             <div class="row">
                 <div class="col-sm-12">
-                        <form method="post" action="createCompany">
+                    <form method="post" action="createCompany" id="computer_input">
 
-                            <label for="companyName">Nom de l'entreprise :  </label>
-                            <input type="text" id="companyName" name="companyName" value="" size="20" maxlength="20"/>
-                            <br />
+                        <label for="computerName">Nom de l'ordinateur :  </label>
+                        <input type="text" id="computerName" name="computerName" value="" size="20" maxlength="20"/>
+                        <br />
 
-                            <input type="submit" value="Valider" class="button"  />
-                        </form>
+                        <label for="companyName">Nom de l'entreprise :  </label>
+
+                        <%--TODO: make list dynamic, get company list, input here--%>
+                        <select id="companyName" name="companyName" form="computer_input">
+                            <option value="1">Apple Inc.</option>
+                            <option value="2">Thinking Machines</option>
+                            <option value="3">RCA</option>
+                            <option value="4">Netronics</option>
+                        </select>
+                        <br />
+
+                        <label for="introduced">Date d'entree :  </label>
+                        <input type="date" id="introduced" name="introduced" value="" size="20" maxlength="20"/>
+                        <br />
+
+                        <label for="discontinued">Date de sortie :  </label>
+                        <input type="date" id="discontinued" name="discontinued" value="" size="20" maxlength="20"/>
+                        <br />
+
+
+
+                        <input type="submit" value="Valider" class="button"  />
+                    </form>
                 </div>
             </div>
 
@@ -78,3 +96,4 @@
 
 
 </body>
+
