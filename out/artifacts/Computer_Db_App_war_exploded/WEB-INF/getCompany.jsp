@@ -1,5 +1,6 @@
 
 <%@ page import="Util.Company" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--
   Created by IntelliJ IDEA.
   User: Alex
@@ -62,19 +63,33 @@
                     <%--${ computer.name } ${ computer.company.name }--%>
                     <%--</div>--%>
                     <div class="informations-pokemon ">
-                        <div class="flex-container">
-                            <div class="flex-item enonce">Id :</div>
-                            <div class="flex-item donnee">${ company.id }</div>
-                        </div>
 
                         <div class="flex-container">
                             <div class="flex-item enonce">Name :</div>
                             <div class="flex-item donnee">${ company.name }</div>
                         </div>
-
-
-
-
+                    </div>
+                    <div class ="row container-fluid">
+                        <c:forEach var="computer" items="${computers}">
+                            <a href="${pageContext.request.contextPath}/getComputer?id=${computer.id}"
+                               class="pokeliste container col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2 slide">
+                                <!--Utilisation du filtre custom pour récupérer les pokemons voulus dans l'ordre voulu-->
+                                <div class="separator"></div>
+                                <div class="img-circle-container hvr-bob hvr-float-shadow">
+                                </div>
+                                <!--Nom et numéro du pokemon-->
+                                <h4><c:out value="${computer.name}"/></h4>
+                                <!--Types-->
+                                <div class="flex-container">
+                                    <div class="flex-item type">
+                                        <c:out value="${computer.introduced}"/>
+                                    </div>
+                                    <div class="flex-item type">
+                                        <c:out value="${computer.discontinued}"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </c:forEach>
                     </div>
                 </div>
             </div>

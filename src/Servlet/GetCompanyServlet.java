@@ -1,6 +1,7 @@
 package Servlet;
 
 import Util.Company;
+import Util.Computer;
 import Util.SQLConnection.ManageCompany;
 import Util.SQLConnection.ManageComputer;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,8 +26,10 @@ public class GetCompanyServlet extends HttpServlet {
             id = Integer.valueOf(request.getParameter("id"));
         }
         Company company = ManageCompany.getCompany(id);
+        List computers = ManageComputer.listComputer(id);
         String testMsg = "";
         request.setAttribute("company", company);
+        request.setAttribute("computers",computers);
 //        request.setAttribute("Servlet.test", computers);
         this.getServletContext().getRequestDispatcher("/WEB-INF/getCompany.jsp").forward(request, response);
     }
