@@ -16,14 +16,12 @@ import java.util.List;
  */
 public class GetComputerServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Computer> computers;
-        int id = 5;
+        int id = Integer.valueOf(request.getParameter("id"));
         Computer computer = ManageComputer.getComputer(id);
         String testMsg = "";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
         request.setAttribute("computer", computer);
         request.setAttribute("sdf", sdf);
-//        request.setAttribute("Servlet.test", computers);
         this.getServletContext().getRequestDispatcher("/WEB-INF/getComputer.jsp").forward(request, response);
     }
 }

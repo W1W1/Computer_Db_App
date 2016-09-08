@@ -81,7 +81,9 @@
                             <%--${ computer.introduced }--%>
                                 <%
                                     SimpleDateFormat sdf = (SimpleDateFormat) request.getAttribute("sdf");
-                                    String introduced = sdf.format(((Computer)request.getAttribute("computer")).getIntroduced());
+                                    String introduced="";
+                                    if((((Computer)request.getAttribute("computer")).getIntroduced())!= null)
+                                     introduced = sdf.format(((Computer)request.getAttribute("computer")).getIntroduced());
                                 %>
                                 <%= introduced %>
                             </div>
