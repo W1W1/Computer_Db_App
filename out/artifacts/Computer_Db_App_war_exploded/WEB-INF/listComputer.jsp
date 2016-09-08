@@ -42,15 +42,14 @@
             De cette façon pas de problème de changement continu de lien et pas d'erreur a chaque digest-->
             <ul class="nav navbar-nav" >
                 <!--Différents lien d'accès-->
-                <li><a >Ordinateur</a></li>
-                <li><a >Entreprise</a></li>
-                <li><a >A propos</a></li>
+                <li><a href="/listComputer">Ordinateur</a></li>
+                <li><a href="/listCompany">Entreprise</a></li>
+                <li><a href="/Apropos">A propos</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <!--Différents lien d'accès aux ancrages-->
-                <li><a >Listing</a></li>
-                <li><a >Ajout</a></li>
-                <li><a >Suppression</a></li>
+                <li><a href="/listComputer">Listing</a></li>
+                <li><a href="/ajoutComputer">Ajout</a></li>
             </ul>
         </div>
     </div>
@@ -82,6 +81,12 @@
                         <a class="btn btn-default param-button" ng-click="main.setParams('nom')">Alphabétique</a>
                         <span ng-show="main.Params === 'nom'" ng-class="main.reverse==false? 'glyphicon glyphicon-arrow-up':'glyphicon glyphicon-arrow-down'"></span>
                     </div>
+                    <form method="post" action="listComputer">
+
+                        <input type="number" id="page" name="page" value="<c:out value="${page}"/>" size="30" maxlength="30" />
+                        <input type="number" id="nbElements" name="nbElements" value="<c:out value="${nbElements}"/>" size="30" maxlength="30" />
+                        <input type="submit" value="Valider"  />
+                    </form>
                 </div>
             </div>
             <!--Affichage des Pokemon-->

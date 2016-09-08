@@ -56,8 +56,6 @@
 </div>
 <div class="container-fluid main" id="Top">
     <div class="container cadre" >
-        <div id = "Pokemon">
-            <!--Image, description du pokemon, taille, poids et types-->
             <div class="row">
                 <div class="col-sm-12">
                     <%--<div>--%>

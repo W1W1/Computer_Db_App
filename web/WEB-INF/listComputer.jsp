@@ -81,6 +81,12 @@
                         <a class="btn btn-default param-button" ng-click="main.setParams('nom')">Alphabétique</a>
                         <span ng-show="main.Params === 'nom'" ng-class="main.reverse==false? 'glyphicon glyphicon-arrow-up':'glyphicon glyphicon-arrow-down'"></span>
                     </div>
+                    <form method="post" action="listComputer">
+
+                        <input type="number" id="page" name="page" value="<c:out value="${page}"/>" size="30" maxlength="30" />
+                        <input type="number" id="nbElements" name="nbElements" value="<c:out value="${nbElements}"/>" size="30" maxlength="30" />
+                        <input type="submit" value="Valider"  />
+                    </form>
                 </div>
             </div>
             <!--Affichage des Pokemon-->
