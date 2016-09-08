@@ -31,8 +31,8 @@ public class ComputerDTO {
         public ComputerDTO(Computer computer) {
             this.id = computer.getId();
             this.name = computer.getName();
-            this.introduced = sdf.format(computer.getIntroduced());
-            this.discontinued = sdf.format(computer.getDiscontinued());
+            this.introduced = computer.getIntroduced()!=null?sdf.format(computer.getIntroduced()):"";
+            this.discontinued = computer.getDiscontinued()!=null?sdf.format(computer.getDiscontinued()):"";
             this.company = computer.getCompany();
         }
 
