@@ -43,14 +43,14 @@
             De cette façon pas de problème de changement continu de lien et pas d'erreur a chaque digest-->
             <ul class="nav navbar-nav">
                 <!--Différents lien d'accès-->
-                <li><a href="/listComputer">Ordinateur</a></li>
-                <li><a href="/listCompany">Entreprise</a></li>
-                <li><a href="/Apropos">A propos</a></li>
+                <li><a href="${pageContext.request.contextPath}/listComputer">Ordinateur</a></li>
+                <li><a href="${pageContext.request.contextPath}/listCompany">Entreprise</a></li>
+                <li><a href="${pageContext.request.contextPath}/Apropos">A propos</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <!--Différents lien d'accès aux ancrages-->
-                <li><a href="/listComputer">Listing</a></li>
-                <li><a href="/ajoutComputer">Ajout</a></li>
+                <li><a href="${pageContext.request.contextPath}/listComputer">Listing</a></li>
+                <li><a href="${pageContext.request.contextPath}/ajoutComputer">Ajout</a></li>
             </ul>
         </div>
     </div>

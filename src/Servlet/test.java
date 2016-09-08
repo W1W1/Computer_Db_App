@@ -47,17 +47,13 @@ public class test extends HttpServlet {
         this.getServletContext().getRequestDispatcher("/WEB-INF/listComputer.jsp").forward(request, response);
     }
 
-//    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-//
-//        /* Préparation de l'objet formulaire */
-//
-//        /* Ajout du bean et de l'objet métier à l'objet requête */
-//        int page = Integer.valueOf(request.getParameter("page"));
-//        int nbElements = Integer.valueOf(request.getParameter("nbElements"));
-//        request.setAttribute("nbElements",nbElements);
-//        request.setAttribute("page",page);
-//        this.getServletContext().getRequestDispatcher("/WEB-INF/listComputer.jsp").forward( request, response );
-//
-//    }
+    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+
+
+        int page = Integer.valueOf(request.getParameter("page"));
+        int nbElements = Integer.valueOf(request.getParameter("nbElements"));
+        String url= String.format(request.getContextPath() + "/listComputer?page=%d&nbElements=%d",page,nbElements);
+        response.sendRedirect(url);
+    }
 
 }
