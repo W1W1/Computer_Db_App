@@ -23,6 +23,6 @@ public class GetCompanyServlet extends HttpServlet {
         String testMsg = "";
         request.setAttribute("company", company);
 //        request.setAttribute("Servlet.test", computers);
-        this.getServletContext().getRequestDispatcher("/WEB-INF/getCompany.jsp").forward(request, response);
+        this.getServletContext().getRequestDispatcher("getCompany").forward(request, response);
     }
 }

@@ -41,15 +41,14 @@
             De cette façon pas de problème de changement continu de lien et pas d'erreur a chaque digest-->
             <ul class="nav navbar-nav" >
                 <!--Différents lien d'accès-->
-                <li><a >Ordinateur</a></li>
-                <li><a >Entreprise</a></li>
-                <li><a >A propos</a></li>
+                <li><a href="/listComputer">Ordinateur</a></li>
+                <li><a href="/listCompany">Entreprise</a></li>
+                <li><a href="/Apropos">A propos</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <!--Différents lien d'accès aux ancrages-->
-                <li><a >Listing</a></li>
-                <li><a >Ajout</a></li>
-                <li><a >Suppression</a></li>
+                <li><a href="/listComputer">Listing</a></li>
+                <li><a href="/ajoutComputer">Ajout</a></li>
             </ul>
         </div>
     </div>

@@ -81,7 +81,7 @@ public class ManageCompany{
         try {
             tx = session.beginTransaction();
             String str = "FROM Company";
-            int companyID = (Integer) session.save(company);
+            session.save(company);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
