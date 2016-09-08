@@ -45,10 +45,7 @@
         <servlet-name>test</servlet-name>
         <url-pattern>/listComputer</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
-=======
 
->>>>>>> master
     <servlet-mapping>
         <servlet-name>getComputer</servlet-name>
         <url-pattern>/getComputer</url-pattern>
