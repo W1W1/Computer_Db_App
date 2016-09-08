@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class CreateCompanyForm {
 
-    private static final String CHAMP_NAME = "Nom de l'entreprise";
+    private static final String CHAMP_NAME = "companyName";
     private String              resultat;
     private Map<String, String> erreurs = new HashMap<String, String>();
 
