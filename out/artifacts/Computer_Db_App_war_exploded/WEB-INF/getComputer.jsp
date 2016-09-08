@@ -1,4 +1,6 @@
-<%@ page import="Util.Computer" %><%--
+<%@ page import="Util.Computer" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: Richard-DT
   Date: 08/09/2016
@@ -58,14 +60,10 @@
             <!--Image, description du pokemon, taille, poids et types-->
             <div class="row">
                 <div class="col-sm-12">
-                    <%--<div>--%>
-                        <%--pzpepcv--%>
-                        <%--<%--%>
-                            <%--String attribut = ((Computer) request.getAttribute("computer")).toString();--%>
-                            <%--out.println(attribut);--%>
-                        <%--%>--%>
-                    <%--</div>--%>
-                    <div class="informations-pokemon flex-container  slideanim">
+                        <%--<div>--%>
+                            <%--${ computer.name } ${ computer.company.name }--%>
+                        <%--</div>--%>
+                    <div class="informations-pokemon ">
                         <div class="flex-container">
                             <div class="flex-item enonce">Nom :</div>
                             <div class="flex-item donnee">${ computer.name }</div>
@@ -77,6 +75,32 @@
                             <div class="flex-item enonce">Company :</div>
                             <div class="flex-item donnee">${ computer.company.name }</div>
                         </div>
+                        <div class="flex-container">
+                            <div class="flex-item enonce">Entré le :</div>
+                            <div class="flex-item donnee">
+                            <%--${ computer.introduced }--%>
+                                <%
+                                    SimpleDateFormat sdf = (SimpleDateFormat) request.getAttribute("sdf");
+                                    String introduced = sdf.format(((Computer)request.getAttribute("computer")).getIntroduced());
+                                %>
+                                <%= introduced %>
+                            </div>
+                        </div>
+                        <div class="flex-container">
+                            <div class="flex-item enonce">Sortie le :</div>
+                            <div class="flex-item donnee">
+                            <%--${ computer.introduced }--%>
+                                <%
+                                    String discontinued="";
+//                                SimpleDateFormat sdf = (SimpleDateFormat) request.getAttribute("sdf");
+                                    if((((Computer)request.getAttribute("computer")).getDiscontinued())!= null)
+                                 discontinued = sdf.format(((Computer)request.getAttribute("computer")).getDiscontinued());
+                                %>
+                                <%=  discontinued%>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>

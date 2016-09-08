@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -16,10 +17,12 @@ import java.util.List;
 public class GetComputerServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Computer> computers;
-        int id = 1;
+        int id = 5;
         Computer computer = ManageComputer.getComputer(id);
         String testMsg = "";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
         request.setAttribute("computer", computer);
+        request.setAttribute("sdf", sdf);
 //        request.setAttribute("Servlet.test", computers);
         this.getServletContext().getRequestDispatcher("/WEB-INF/getComputer.jsp").forward(request, response);
     }

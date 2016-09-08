@@ -188,7 +188,6 @@ border-radius: 10px;
 padding: 7px;
 font-family: Roboto;
 font-size: 1.4em;
-max-height: 3.5em;
 width: 95%;
 margin: auto;
 margin-bottom: 1em;
@@ -561,4 +560,3 @@ display: none;
 .separator {
 	height: 2vw;
 }
-
