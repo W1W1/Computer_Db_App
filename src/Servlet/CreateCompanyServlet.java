@@ -18,7 +18,7 @@ public class CreateCompanyServlet extends HttpServlet {
     public static final String ATT_COMPANY = "company";
     public static final String ATT_FORM     = "form";
 
-    public static final String VUE_SUCCES   = "/WEB-INF/getCommande.jsp";
+    public static final String VUE_SUCCES   = "/getCompany";
     public static final String VUE_FORM     = "/WEB-INF/createCompany.jsp";
 
 
@@ -44,7 +44,7 @@ public class CreateCompanyServlet extends HttpServlet {
         if ( form.getErreurs().isEmpty() ) {
             /* Si aucune erreur, alors input de l'entrep affichage de la fiche récapitulative */
             ManageCompany.addCompany(company);
-            this.getServletContext().getRequestDispatcher( VUE_SUCCES ).forward( request, response );
+            response.sendRedirect(request.getContextPath() + VUE_SUCCES);
         } else {
             /* Sinon, ré-affichage du formulaire de création avec les erreurs */
             this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
