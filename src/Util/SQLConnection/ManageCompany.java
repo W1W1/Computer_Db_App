@@ -27,10 +27,6 @@ public class ManageCompany{
         try{
             tx = session.beginTransaction();
             List companies = session.createQuery("FROM Company ").list();
-            for (Iterator iterator =companies.iterator(); iterator.hasNext();){
-                Company company = (Company) iterator.next();
-//                System.out.println(company);
-            }
             return companies;
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();

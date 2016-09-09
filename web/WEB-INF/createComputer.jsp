@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--
   Created by IntelliJ IDEA.
   User: Alex
@@ -24,6 +25,10 @@
     <link href="css/custom-nav.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet" media="all">
 
+    <%--Bootstrap javascrpit plugin--%>
+    <script type='text/javascript' src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type='text/javascript' src="js/bootstrap.js"></script>
+
     <meta charset="utf-8"/>
     <title>Test</title>
 </head>
@@ -32,22 +37,28 @@
     <div class="container-fluid" >
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            <a class="navbar-brand" >Projet Des Enfer</a>
+            <a href="${pageContext.request.contextPath}/home" class="navbar-brand" >Computer Database</a>
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <!--Initialisation de la variable de lien aléatoire
             De cette façon pas de problème de changement continu de lien et pas d'erreur a chaque digest-->
             <ul class="nav navbar-nav" >
                 <!--Différents lien d'accès-->
-                <li><a >Ordinateur</a></li>
-                <li><a >Entreprise</a></li>
-                <li><a >A propos</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <!--Différents lien d'accès aux ancrages-->
-                <li><a >Listing</a></li>
-                <li><a >Ajout</a></li>
-                <li><a >Suppression</a></li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ordinateur <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="${pageContext.request.contextPath}/listComputer">Liste d'ordinateurs</a></li>
+                        <li><a href="${pageContext.request.contextPath}/createComputer">Creer un ordinateur</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Entreprise <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="${pageContext.request.contextPath}/listCompany">Liste d'entreprises</a></li>
+                        <li><a href="${pageContext.request.contextPath}/createCompany">Creer une entreprise</a></li>
+                    </ul>
+                </li>
+                <li><a href="${pageContext.request.contextPath}/Apropos">A propos</a></li>
             </ul>
         </div>
     </div>
@@ -58,7 +69,7 @@
             <!--Informations sur l'entreprise-->
             <div class="row">
                 <div class="col-sm-12">
-                    <form method="post" action="createCompany" id="computer_input">
+                    <form method="post" action="createComputer" id="computer_input">
 
                         <label for="computerName">Nom de l'ordinateur :  </label>
                         <input type="text" id="computerName" name="computerName" value="" size="20" maxlength="20"/>
@@ -66,12 +77,15 @@
 
                         <label for="companyName">Nom de l'entreprise :  </label>
 
-                        <%--TODO: make list dynamic, get company list, input here--%>
                         <select id="companyName" name="companyName" form="computer_input">
-                            <option value="1">Apple Inc.</option>
-                            <option value="2">Thinking Machines</option>
-                            <option value="3">RCA</option>
-                            <option value="4">Netronics</option>
+                            <c:forEach var="company" items="${companies}">
+                                <option value="<c:out value="${company.id}"/>"><c:out value="${company.name}"/></option>
+                            </c:forEach>
+                            <%--<option value="1">Apple Inc.</option>--%>
+                            <%--<option value="2">Thinking Machines</option>--%>
+                            <%--<option value="3">RCA</option>--%>
+                            <%--<option value="4">Netronics</option>--%>
+
                         </select>
                         <br />
 

@@ -38,7 +38,7 @@ public class GetCompanyServlet extends HttpServlet {
         }
         request.setAttribute("company", company);
         request.setAttribute("computers", computerDTOs);
-//        request.setAttribute("Servlet.test", computers);
+//        request.setAttribute("Servlet.ListComputerServlet", computers);
         this.getServletContext().getRequestDispatcher("/WEB-INF/getCompany.jsp").forward(request, response);
     }
 }

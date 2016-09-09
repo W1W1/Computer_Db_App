@@ -147,7 +147,7 @@ public class ManageComputer {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            int computerID = (Integer) session.save(computer);
+            session.save(computer);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
@@ -173,7 +173,7 @@ public class ManageComputer {
         }
     }
 
-    //TODO: make sure this actually gets the last id of a COMPUTER, unsire if this is the case (SATAN EDIT HERE PLEASE)ez
+
     public static long getLastComputerId() {
         Session session = factory.openSession();
         Transaction tx = null;
