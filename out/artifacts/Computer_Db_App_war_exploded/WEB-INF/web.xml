@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <servlet>
-        <servlet-name>test</servlet-name>
-        <servlet-class>Servlet.test</servlet-class>
+        <servlet-name>listComputer</servlet-name>
+        <servlet-class>Servlet.ListComputerServlet</servlet-class>
 
-        <description>Ma première servlet de Servlet.test.</description>
+        <description>Ma première servlet de Servlet.ListComputerServlet.</description>
 
         <init-param>
             <param-name>auteur</param-name>
@@ -28,7 +28,7 @@
         <servlet-name>getComputer</servlet-name>
         <servlet-class>Servlet.GetComputerServlet</servlet-class>
 
-        <description>Ma première servlet de Servlet.test.</description>
+        <description>Ma première servlet de Servlet.ListComputerServlet.</description>
 
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -56,9 +56,26 @@
 
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>home</servlet-name>
+        <servlet-class>Servlet.HomeServlet</servlet-class>
+
+        <description>Servlet manages creation of new computers in the database</description>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>about</servlet-name>
+        <servlet-class>Servlet.AboutServlet</servlet-class>
+
+        <description></description>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
     <servlet-mapping>
-        <servlet-name>test</servlet-name>
+        <servlet-name>listComputer</servlet-name>
         <url-pattern>/listComputer</url-pattern>
     </servlet-mapping>
 
@@ -85,6 +102,16 @@
     <servlet-mapping>
         <servlet-name>createComputer</servlet-name>
         <url-pattern>/createComputer</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>about</servlet-name>
+        <url-pattern>/Apropos</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>home</servlet-name>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
 
 </web-app>

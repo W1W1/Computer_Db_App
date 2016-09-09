@@ -17,7 +17,7 @@ import java.util.List;
  * Created by Richard-DT on 07/09/2016.
  */
 
-public class test extends HttpServlet {
+public class ListComputerServlet extends HttpServlet {
     public final static int PAGE = 1;
     public final static int NB_ELEMENTS= 20;
 
