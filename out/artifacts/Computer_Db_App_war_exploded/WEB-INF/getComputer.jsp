@@ -99,7 +99,7 @@
                         <div class="flex-container">
                             <div class="flex-item enonce">Sortie le :</div>
                             <div class="flex-item donnee">
-                                ${ computer.introduced }
+                                ${ computer.discontinued }
                             </div>
                         </div>
 

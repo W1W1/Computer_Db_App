@@ -1,8 +1,10 @@
 package Servlet;
 
 
+import Util.Company;
 import Util.Computer;
 import Util.Forms.CreateComputerForm;
+import Util.SQLConnection.ManageCompany;
 import Util.SQLConnection.ManageComputer;
 
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by Alex on 9/8/2016.
@@ -24,6 +27,10 @@ public class CreateComputerServlet extends HttpServlet {
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* À la réception d'une requête GET, simple affichage du formulaire */
+        List<Company> companies = ManageCompany.listCompany();
+
+        request.setAttribute("companies",companies);
+
         this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
     }
 

@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--
   Created by IntelliJ IDEA.
   User: Alex
@@ -68,7 +69,7 @@
             <!--Informations sur l'entreprise-->
             <div class="row">
                 <div class="col-sm-12">
-                    <form method="post" action="createCompany" id="computer_input">
+                    <form method="post" action="createComputer" id="computer_input">
 
                         <label for="computerName">Nom de l'ordinateur :  </label>
                         <input type="text" id="computerName" name="computerName" value="" size="20" maxlength="20"/>
@@ -76,12 +77,15 @@
 
                         <label for="companyName">Nom de l'entreprise :  </label>
 
-                        <%--TODO: make list dynamic, get company list, input here--%>
                         <select id="companyName" name="companyName" form="computer_input">
-                            <option value="1">Apple Inc.</option>
-                            <option value="2">Thinking Machines</option>
-                            <option value="3">RCA</option>
-                            <option value="4">Netronics</option>
+                            <c:forEach var="company" items="${companies}">
+                                <option value="<c:out value="${company.id}"/>"><c:out value="${company.name}"/></option>
+                            </c:forEach>
+                            <%--<option value="1">Apple Inc.</option>--%>
+                            <%--<option value="2">Thinking Machines</option>--%>
+                            <%--<option value="3">RCA</option>--%>
+                            <%--<option value="4">Netronics</option>--%>
+
                         </select>
                         <br />
 

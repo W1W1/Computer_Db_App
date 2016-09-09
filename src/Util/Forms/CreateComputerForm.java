@@ -2,6 +2,7 @@ package Util.Forms;
 
 import Util.Computer;
 import Util.Company;
+import Util.SQLConnection.ManageCompany;
 
 import java.text.ParseException;
 import java.util.HashMap;
@@ -34,13 +35,13 @@ public class CreateComputerForm {
         erreurs = computerForm.getErreurs();
 
         String name = getValeurChamp( request, CHAMP_NAME );
-        String company_name = getValeurChamp( request, CHAMP_COMPANY_NAME );
+        String company_id = getValeurChamp( request, CHAMP_COMPANY_NAME );
         String introduced = getValeurChamp( request, CHAMP_INTRODUCED );
         String discontinued = getValeurChamp( request, CHAMP_DISCONTINUED );
 
         Computer computer = new Computer();
         Company company = new Company();
-
+        Company lookup = new Company();
 
         try {
             validationName( name );
@@ -50,34 +51,30 @@ public class CreateComputerForm {
         computer.setName( name );
 
         try {
-            validationCompanyName( company_name );
+            validationCompanyName( company_id );
         } catch ( Exception e ) {
             setErreur( CHAMP_COMPANY_NAME, e.getMessage() );
         }
 
-        company.setName(company_name);
-        //TODO: get id thru name
-        long companyId=1;
-        company.setId(companyId);
+        company = ManageCompany.getCompany(Integer.valueOf(company_id));
 
         computer.setCompany(company);
+
+        try {
+            computer.setIntroduced(introduced);
+        } catch (Exception e) {
+            setErreur( CHAMP_INTRODUCED, e.getMessage() );
+        }
+        try {
+            computer.setDiscontinued(discontinued);
+        } catch (Exception e) {
+            setErreur( CHAMP_DISCONTINUED, e.getMessage() );
+        }
 
         if ( erreurs.isEmpty() ) {
             resultat = "Succès de la création de l'entreprise.";
         } else {
             resultat = "Échec de la création de l'entreprise.";
-        }
-
-        //TODO: Validation methods for dates (introduced and discontinued)
-        try {
-            computer.setIntroduced(CHAMP_INTRODUCED);
-        } catch (Exception e) {
-            setErreur( CHAMP_COMPANY_NAME, e.getMessage() );
-        }
-        try {
-            computer.setDiscontinued(CHAMP_DISCONTINUED);
-        } catch (Exception e) {
-            setErreur( CHAMP_COMPANY_NAME, e.getMessage() );
         }
 
         return computer;
