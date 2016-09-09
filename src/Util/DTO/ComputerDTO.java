@@ -17,7 +17,7 @@ public class ComputerDTO {
      * @version 1.0
      */
 
-    public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+    public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         private long id;
         private String name;
         private String introduced;
