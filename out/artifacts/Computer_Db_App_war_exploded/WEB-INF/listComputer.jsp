@@ -88,10 +88,39 @@
 
                         <label for="nbElements">Nombre d'ordinateurs par page :  </label>
                         <select id="nbElements" name="nbElements" form="page_specifications">
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                            <option value="500">500</option>
+
+                            <c:choose>
+                                <c:when test="${nbElements==25}">
+                                    <option selected value="25">25</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="25">25</option>
+                                </c:otherwise>
+                            </c:choose>
+                            <c:choose>
+                                <c:when test="${nbElements==50}">
+                                    <option selected value="50">50</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="50">50</option>
+                                </c:otherwise>
+                            </c:choose>
+                            <c:choose>
+                                <c:when test="${nbElements==100}">
+                                    <option selected value="100">100</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="100">100</option>
+                                </c:otherwise>
+                            </c:choose>
+                            <c:choose>
+                                <c:when test="${nbElements==500}">
+                                    <option selected value="500">500</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="500">500</option>
+                                </c:otherwise>
+                            </c:choose>
                         </select>
                         <br />
                         <input type="submit" value="Valider"  />

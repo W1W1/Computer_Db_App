@@ -9,18 +9,14 @@
 <%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-
 <head>
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Computer Creation</title>
     <!-- Material Design fonts -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-
     <!-- Bootstrap Material Design -->
+
     <link href="css/bootstrap.css" rel="stylesheet">
-
-
     <link href="css/pokemon.css" rel="stylesheet">
     <link href="css/custom-nav.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet" media="all">
@@ -81,11 +77,6 @@
                             <c:forEach var="company" items="${companies}">
                                 <option value="<c:out value="${company.id}"/>"><c:out value="${company.name}"/></option>
                             </c:forEach>
-                            <%--<option value="1">Apple Inc.</option>--%>
-                            <%--<option value="2">Thinking Machines</option>--%>
-                            <%--<option value="3">RCA</option>--%>
-                            <%--<option value="4">Netronics</option>--%>
-
                         </select>
                         <br />
 
