@@ -2,6 +2,7 @@ package Servlet;
 
 import Util.Company;
 import Util.Computer;
+import Util.DTO.ComputerDTO;
 import Util.SQLConnection.ManageCompany;
 import Util.SQLConnection.ManageComputer;
 
@@ -19,17 +20,24 @@ import java.util.List;
  */
 public class GetCompanyServlet extends HttpServlet {
     public static int ID = 1;
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Company> companies;
         int id = ID;
-        if (request.getParameter("id")!=null) {
+        if (request.getParameter("id") != null) {
             id = Integer.valueOf(request.getParameter("id"));
         }
         Company company = ManageCompany.getCompany(id);
-        List computers = ManageComputer.listComputer(id);
-        String testMsg = "";
+        List<Computer> computers = ManageComputer.listComputer(id);
+        ArrayList<ComputerDTO> computerDTOs = new ArrayList<>();
+        if (computers != null) {
+            for (Computer computer :
+                    computers) {
+                computerDTOs.add(new ComputerDTO(computer));
+            }
+        }
         request.setAttribute("company", company);
-        request.setAttribute("computers",computers);
+        request.setAttribute("computers", computerDTOs);
 //        request.setAttribute("Servlet.test", computers);
         this.getServletContext().getRequestDispatcher("/WEB-INF/getCompany.jsp").forward(request, response);
     }
