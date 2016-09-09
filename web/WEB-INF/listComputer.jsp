@@ -71,10 +71,19 @@
                     </div>
                     <!--Ajout de ng-class pour lier l'ordre à la flèche allant vers le haut ou le bas
                     Utilisation de ng-click-->
-                    <form method="post" action="listComputer">
-
+                    <form id="page_specifications" method="post" action="listComputer">
+                        <label for="page">Numero de page :  </label>
                         <input type="number" id="page" name="page" value="<c:out value="${page}"/>" size="30" maxlength="30" />
-                        <input type="number" id="nbElements" name="nbElements" value="<c:out value="${nbElements}"/>" size="30" maxlength="30" />
+                        <br />
+
+                        <label for="nbElements">Nombre d'ordinateurs par page :  </label>
+                        <select id="nbElements" name="nbElements" form="page_specifications">
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="500">500</option>
+                        </select>
+                        <br />
                         <input type="submit" value="Valider"  />
                     </form>
                 </div>
