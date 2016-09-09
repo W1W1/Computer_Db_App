@@ -172,6 +172,8 @@ public class ManageComputer {
             session.close();
         }
     }
+
+    //TODO: make sure this actually gets the last id of a COMPUTER, unsire if this is the case (SATAN EDIT HERE PLEASE)ez
     public static long getLastComputerId() {
         Session session = factory.openSession();
         Transaction tx = null;
