@@ -1,11 +1,9 @@
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="Util.Computer" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--
   Created by IntelliJ IDEA.
-  User: Richard-DT
-  Date: 07/09/2016
-  Time: 21:18
+  User: Alex
+  Date: 9/9/2016
+  Time: 11:35 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page pageEncoding="UTF-8" %>
@@ -81,17 +79,17 @@
                     </div>
                     <!--Ajout de ng-class pour lier l'ordre à la flèche allant vers le haut ou le bas
                     Utilisation de ng-click-->
-                    <form id="page_specifications" method="post" action="listComputer">
+                    <form id="page_specifications" method="post" action="listCompany">
                         <label for="page">Numero de page :  </label>
                         <input type="number" id="page" name="page" value="<c:out value="${page}"/>" size="30" maxlength="30" />
                         <br />
 
-                        <label for="nbElements">Nombre d'ordinateurs par page :  </label>
+                        <label for="nbElements">Nombre d'entrprises par page :  </label>
                         <select id="nbElements" name="nbElements" form="page_specifications">
+                            <option value="10">10</option>
                             <option value="25">25</option>
                             <option value="50">50</option>
                             <option value="100">100</option>
-                            <option value="500">500</option>
                         </select>
                         <br />
                         <input type="submit" value="Valider"  />
@@ -100,24 +98,16 @@
             </div>
             <!--Affichage des Pokemon-->
             <div class ="row container-fluid">
-                <c:forEach var="computer" items="${computers}">
-                    <a href="${pageContext.request.contextPath}/getComputer?id=${computer.id}"
+                <c:forEach var="company" items="${companies}">
+                    <a href="${pageContext.request.contextPath}/getCompany?id=${company.id}"
                        class="pokeliste container col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2 slide">
                         <!--Utilisation du filtre custom pour récupérer les pokemons voulus dans l'ordre voulu-->
                         <div class="separator"></div>
                         <div class="img-circle-container hvr-bob hvr-float-shadow">
+                            <!--Nom et numéro du pokemon-->
+                            <h4><c:out value="${company.name}"/></h4>
                         </div>
-                        <!--Nom et numéro du pokemon-->
-                        <h4><c:out value="${computer.name}"/></h4>
-                        <!--Types-->
-                        <div class="flex-container">
-                            <div class="flex-item type">
-                                <c:out value="${computer.introduced}"/>
-                            </div>
-                            <div class="flex-item type">
-                                <c:out value="${computer.discontinued}"/>
-                            </div>
-                        </div>
+
                     </a>
                 </c:forEach>
             </div>
@@ -128,3 +118,4 @@
 
 </body>
 </html>
+

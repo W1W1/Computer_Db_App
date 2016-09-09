@@ -17,6 +17,14 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
+        <servlet-name>listCompany</servlet-name>
+        <servlet-class>Servlet.ListCompanyServlet</servlet-class>
+
+        <description>Servlet manages creation of new computers in the database</description>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
         <servlet-name>getComputer</servlet-name>
         <servlet-class>Servlet.GetComputerServlet</servlet-class>
 
@@ -52,6 +60,11 @@
     <servlet-mapping>
         <servlet-name>test</servlet-name>
         <url-pattern>/listComputer</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>listCompany</servlet-name>
+        <url-pattern>/listCompany</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
