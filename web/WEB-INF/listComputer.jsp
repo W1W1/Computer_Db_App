@@ -15,17 +15,20 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Pokédex</title>
+    <title>Computer List</title>
     <!-- Material Design fonts -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 
     <!-- Bootstrap Material Design -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
-
     <link href="css/pokemon.css" rel="stylesheet">
     <link href="css/custom-nav.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet" media="all">
+
+    <%--Bootstrap javascrpit plugin--%>
+    <script type='text/javascript' src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type='text/javascript' src="js/bootstrap.js"></script>
 
     <meta charset="utf-8"/>
     <title>Test</title>
@@ -35,21 +38,28 @@
     <div class="container-fluid" >
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            <a class="navbar-brand" >Projet Des Enfer</a>
+            <a class="navbar-brand" >Computer Database</a>
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <!--Initialisation de la variable de lien aléatoire
             De cette façon pas de problème de changement continu de lien et pas d'erreur a chaque digest-->
             <ul class="nav navbar-nav" >
                 <!--Différents lien d'accès-->
-                <li><a href="${pageContext.request.contextPath}/listComputer">Ordinateur</a></li>
-                <li><a href="${pageContext.request.contextPath}/listCompany">Entreprise</a></li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ordinateur <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="${pageContext.request.contextPath}/listComputer">Liste d'ordinateurs</a></li>
+                        <li><a href="${pageContext.request.contextPath}/createComputer">Creer un ordinateur</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Entreprise <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Liste d'entreprises</a></li>
+                        <li><a href="${pageContext.request.contextPath}/createCompany">Creer une entreprise</a></li>
+                    </ul>
+                </li>
                 <li><a href="${pageContext.request.contextPath}/Apropos">A propos</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <!--Différents lien d'accès aux ancrages-->
-                <li><a href="${pageContext.request.contextPath}/listComputer">Listing</a></li>
-                <li><a href="${pageContext.request.contextPath}/ajoutComputer">Ajout</a></li>
             </ul>
         </div>
     </div>
