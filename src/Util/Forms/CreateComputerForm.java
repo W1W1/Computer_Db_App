@@ -2,6 +2,8 @@ package Util.Forms;
 
 import Util.Computer;
 import Util.Company;
+
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -67,8 +69,16 @@ public class CreateComputerForm {
         }
 
         //TODO: Validation methods for dates (introduced and discontinued)
-        computer.setIntroduced(CHAMP_INTRODUCED);
-        computer.setDiscontinued(CHAMP_DISCONTINUED);
+        try {
+            computer.setIntroduced(CHAMP_INTRODUCED);
+        } catch (Exception e) {
+            setErreur( CHAMP_COMPANY_NAME, e.getMessage() );
+        }
+        try {
+            computer.setDiscontinued(CHAMP_DISCONTINUED);
+        } catch (Exception e) {
+            setErreur( CHAMP_COMPANY_NAME, e.getMessage() );
+        }
 
         return computer;
     }

@@ -63,13 +63,9 @@ public class Computer {
 	}
 
 	public void setIntroduced(Date introduced) {this.introduced=introduced;}
-	public void setIntroduced(String introduced) {
+	public void setIntroduced(String introduced) throws ParseException{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-        try {
-            this.introduced = sdf.parse(introduced);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.introduced = sdf.parse(introduced);
     }
 
 	public Date getDiscontinued() {
@@ -79,13 +75,10 @@ public class Computer {
 	public void setDiscontinued(Date discontinued) {
 		this.discontinued = discontinued;
 	}
-	public void setDiscontinued(String discontinued) {
+	public void setDiscontinued(String discontinued) throws ParseException{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-        try {
-            this.discontinued = sdf.parse(discontinued);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.discontinued = sdf.parse(discontinued);
+
     }
 
 	public Company getCompany() {

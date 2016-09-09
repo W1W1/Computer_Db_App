@@ -40,6 +40,14 @@
 
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>createComputer</servlet-name>
+        <servlet-class>Servlet.CreateComputerServlet</servlet-class>
+
+        <description>Servlet manages creation of new computers in the database</description>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>test</servlet-name>
@@ -59,6 +67,11 @@
     <servlet-mapping>
         <servlet-name>createCompany</servlet-name>
         <url-pattern>/createCompany</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>createComputer</servlet-name>
+        <url-pattern>/createComputer</url-pattern>
     </servlet-mapping>
 
 </web-app>

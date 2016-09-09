@@ -75,10 +75,10 @@
                         <!--Separator pour que les deux items soient écartés d'un certain espacement-->
                         <div class="separator-taille-poids"></div>
 
-                        <div class="flex-container">
+                        <a class="flex-container" href="${pageContext.request.contextPath}/getCompany?id=${ computer.company.id }">
                             <div class="flex-item enonce">Company :</div>
                             <div class="flex-item donnee">${ computer.company.name }</div>
-                        </div>
+                        </a>
                         <div class="flex-container">
                             <div class="flex-item enonce">Entré le :</div>
                             <div class="flex-item donnee">

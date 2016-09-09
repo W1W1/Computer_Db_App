@@ -71,16 +71,6 @@
                     </div>
                     <!--Ajout de ng-class pour lier l'ordre à la flèche allant vers le haut ou le bas
                     Utilisation de ng-click-->
-                    <div class="row container col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-3 param-recherche"><span class="tri"> Trier par :   </span>
-                        <a class="btn btn-default param-button" ng-click="main.setParams('id')">Numéro</a>
-                        <span ng-show="main.Params === 'id'" ng-class="main.reverse==false? 'glyphicon glyphicon-arrow-up':'glyphicon glyphicon-arrow-down'"></span>
-                        <a class="btn btn-default param-button" ng-click="main.setParams('taille')">Taille</a>
-                        <span ng-show="main.Params === 'taille'" ng-class="main.reverse==false? 'glyphicon glyphicon-arrow-up':'glyphicon glyphicon-arrow-down'"></span>
-                        <a class="btn btn-default param-button" ng-click="main.setParams('poids')">Poids</a>
-                        <span ng-show="main.Params === 'poids'" ng-class="main.reverse==false? 'glyphicon glyphicon-arrow-up':'glyphicon glyphicon-arrow-down'"></span>
-                        <a class="btn btn-default param-button" ng-click="main.setParams('nom')">Alphabétique</a>
-                        <span ng-show="main.Params === 'nom'" ng-class="main.reverse==false? 'glyphicon glyphicon-arrow-up':'glyphicon glyphicon-arrow-down'"></span>
-                    </div>
                     <form method="post" action="listComputer">
 
                         <input type="number" id="page" name="page" value="<c:out value="${page}"/>" size="30" maxlength="30" />
