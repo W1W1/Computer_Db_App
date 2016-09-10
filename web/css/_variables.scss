@@ -15,27 +15,38 @@ $gray:                   lighten($gray-base, 33.5%) !default; // #555
 $gray-light:             #4E5D6C !default;   // #999
 $gray-lighter:           #EBEBEB !default; // #eee
 
-$brand-primary:         #DF691A !default;
+
+$bloir:                  #2B3E50 !default;
+$bloir-lighter:          lighten($bloir,20%) !default;
+
+$react:                  rgb(0, 216, 255) !default;
+$react-lighter:          lighten($react,20%) ! default;
+$react-lighter:          lighten($react,35%) ! default;
+
+
+$brand-primary:         #0e0d2a !default;
 $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
 
-
+$brand-custom:          $react;
+// $brand-secondary:
 //== Scaffolding
 //
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
 // $body-bg:               $brand-primary !default;
-$body-bg:               #2B3E50 !default;
+$body-bg:               $bloir !default;
+$bandeau:                $gray-lighter !default;
 //** Global text color on `<body>`.
 $text-color:            $gray-lighter !default;
 
 //** Global textual link color.
-$link-color:            $brand-primary !default;
+$link-color:            $text-color !default;
 //** Link hover color set via `darken()` function.
-$link-hover-color:      $link-color !default;
+$link-hover-color:      $brand-custom !default;
 //** Link hover decoration.
 $link-hover-decoration: underline !default;
 
@@ -776,7 +787,7 @@ $badge-link-hover-color:      #fff !default;
 $badge-bg:                    $gray-light !default;
 
 //** Badge text color in active nav link
-$badge-active-color:          $link-color !default;
+$badge-active-color:          $link-hover-color !default;
 //** Badge background color in active nav link
 $badge-active-bg:             #fff !default;
 

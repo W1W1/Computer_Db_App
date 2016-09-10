@@ -19,11 +19,7 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 
     <!-- Bootstrap Material Design -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-
-
-    <link href="css/pokemon.css" rel="stylesheet">
-    <link href="css/custom-nav.css" rel="stylesheet">
+    <link href="css/bootswatch.nested.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet" media="all">
 
     <%--Bootstrap javascrpit plugin--%>
@@ -66,48 +62,47 @@
         </div>
     </div>
 </div>
-<div class="container-fluid main" id="Top">
-    <div class="container cadre">
+<div class="container-fluid bandeau" id="Top">
+    <div class=>
         <div id="Pokemon">
-            <ul class="pager">
-                <!--Bouton d'accès rapide aux pokemons suivants, précédents et nom du pokemon courant-->
-                <li class="{{pokemonCtrl.classPrevious}}"><a href="${pageContext.request.contextPath}/getComputer?id=${computer.id-1}">&lsaquo;</a></li>
-                <li class="title-container"><h1>Information de l'ordinateur </h1></li>
-                <li class="{{pokemonCtrl.classNext}}"><a href="${pageContext.request.contextPath}/getComputer?id=${computer.id+1}">&rsaquo;</a></li>
-            </ul>
-            <!--Image, description du pokemon, taille, poids et types-->
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="informations-pokemon ">
-                        <div class="flex-container">
-                            <div class="flex-item enonce">Nom :</div>
-                            <div class="flex-item donnee">${ computer.name }</div>
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="container-justified">
+                            <a class="item" href="${pageContext.request.contextPath}/getComputer?id=${computer.id-1}">&lsaquo;</a>
+                            <h1 class="item">Information de l'ordinateur </h1>
+                            <a class="item" href="${pageContext.request.contextPath}/getComputer?id=${computer.id+1}">&rsaquo;</a>
                         </div>
-                        <!--Separator pour que les deux items soient écartés d'un certain espacement-->
-                        <div class="separator-taille-poids"></div>
+                    </div>
+                    <div class="container-justified">
+                        <div class="item">Nom :</div>
+                        <div class="item" >${ computer.name }</div>
+                    </div>
+                    <!--Separator pour que les deux items soient écartés d'un certain espacement-->
+                    <div class="separator-taille-poids"></div>
 
-                        <a class="flex-container" href="${pageContext.request.contextPath}/getCompany?id=${ computer.company.id }">
-                            <div class="flex-item enonce">Company :</div>
-                            <div class="flex-item donnee">${ computer.company.name }</div>
-                        </a>
-                        <div class="flex-container">
-                            <div class="flex-item enonce">Entré le :</div>
-                            <div class="flex-item donnee">
-                                ${ computer.introduced }
-                            </div>
+                    <div  class="container-justified" >
+                        <div class="item" href="${pageContext.request.contextPath}/getCompany?id=${ computer.company.id }">Company :</div>
+                        <a class="item" href="${pageContext.request.contextPath}/getCompany?id=${ computer.company.id }">${ computer.company.name }</a>
+                    </div>
+                    <div  class="container-justified">
+                        <div class="item">Entré le :</div>
+                        <div class="item">
+                            ${ computer.introduced }
                         </div>
-                        <div class="flex-container">
-                            <div class="flex-item enonce">Sortie le :</div>
-                            <div class="flex-item donnee">
-                                ${ computer.discontinued }
-                            </div>
+                    </div>
+                    <div  class="container-justified">
+                        <div class="item">Sortie le :</div>
+                        <div class="item">${computer.discontinued }
                         </div>
-
+                    </div>
+                    <div class="panel-footer">
 
                     </div>
+
+
                 </div>
             </div>
-
         </div>
     </div>
 </div>

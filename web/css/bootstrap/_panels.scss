@@ -1,4 +1,4 @@
-//
+
 // Panels
 // --------------------------------------------------
 
@@ -14,8 +14,13 @@
 
 // Panel contents
 .panel-body {
+
   padding: $panel-body-padding;
   @include clearfix;
+
+  div,a{
+    display: inline-block;
+  }
 }
 
 // Optional heading
@@ -23,6 +28,10 @@
   padding: $panel-heading-padding;
   border-bottom: 1px solid transparent;
   @include border-top-radius(($panel-border-radius - 1));
+
+  a,h1{
+    display: inline-block;
+  }
 
   > .dropdown .dropdown-toggle {
     color: inherit;

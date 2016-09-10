@@ -42,41 +42,44 @@
         </div>
     </div>
 </div>
-<div class="container-fluid main" id="Top">
-    <div class="container cadre">
+<div class="container-fluid ">
+    <div class="container bandeau">
         <div id="Pokemon">
-            <ul class="pager">
-                <!--Bouton d'accès rapide aux pokemons suivants, précédents et nom du pokemon courant-->
-                <li class="{{pokemonCtrl.classPrevious}}"><a href="${pageContext.request.contextPath}/getComputer?id=${computer.id-1}">&lsaquo;</a></li>
-                <li class="title-container"><h1>Information de l'ordinateur </h1></li>
-                <li class="{{pokemonCtrl.classNext}}"><a href="${pageContext.request.contextPath}/getComputer?id=${computer.id+1}">&rsaquo;</a></li>
-            </ul>
             <!--Image, description du pokemon, taille, poids et types-->
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="informations-pokemon ">
-                        <div class="flex-container">
-                            <div class="flex-item enonce">Nom :</div>
-                            <div class="flex-item donnee">${ computer.name }</div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="container-justified">
+                          <a class="item" href="${pageContext.request.contextPath}/getComputer?id=${computer.id-1}">&lsaquo;</a>
+                          <h1 class="item">Information de l'ordinateur </h1>
+                          <a class="item" href="${pageContext.request.contextPath}/getComputer?id=${computer.id+1}">&rsaquo;</a>
+                        </div>
+                        </div>
+                        <div class="container-justified">
+                            <div class="item">Nom :</div>
+                            <div class="item" >${ computer.name }</div>
                         </div>
                         <!--Separator pour que les deux items soient écartés d'un certain espacement-->
                         <div class="separator-taille-poids"></div>
 
-                        <a class="flex-container" href="${pageContext.request.contextPath}/getCompany?id=${ computer.company.id }">
-                            <div class="flex-item enonce">Company :</div>
-                            <div class="flex-item donnee">${ computer.company.name }</div>
-                        </a>
-                        <div class="flex-container">
-                            <div class="flex-item enonce">Entré le :</div>
-                            <div class="flex-item donnee">
+                        <div  class="container-justified" >
+                            <div class="item">Company :</div>
+                            <a class="item" href="${pageContext.request.contextPath}/getCompany?id=${ computer.company.id }">${ computer.company.name }</a>
+                        </div>
+                        <div  class="container-justified">
+                            <div class="item">Entré le :</div>
+                            <div class="item">
                                 ${ computer.introduced }
                             </div>
                         </div>
-                        <div class="flex-container">
-                            <div class="flex-item enonce">Sortie le :</div>
-                            <div class="flex-item donnee">
-                                ${ computer.introduced }
+                        <div  class="container-justified">
+                            <div class="item">Sortie le :</div>
+                            <div class="item">computer.introduced }
                             </div>
+                        </div>
+                        <div class="panel-footer">
+
                         </div>
 
 
@@ -87,5 +90,6 @@
         </div>
     </div>
 </div>
-
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="../js/bootstrap.js"></script>
 </body>

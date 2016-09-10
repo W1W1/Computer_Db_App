@@ -20,10 +20,8 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 
     <!-- Bootstrap Material Design -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootswatch.nested.css" rel="stylesheet">
 
-    <link href="css/pokemon.css" rel="stylesheet">
-    <link href="css/custom-nav.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet" media="all">
 
     <%--Bootstrap javascrpit plugin--%>
@@ -64,11 +62,11 @@
         </div>
     </div>
 </div>
-<div class="container-fluid main" >
+<div class="container-fluid" >
     <!--Utilisation du Infinite Scroll pour limiter les chargements d'image
     distance mise à 0.5 pour mettre en exergue la fonctionalité,
     sa valeur en production serait de 2 pour qu'on ne touche jamais le bas de la page-->
-    <div class="container cadre" >
+    <div  >
         <div>
             <!--Paramètre de filtre et recherche avancés-->
             <div class="row container-fluid recherche-avance">
@@ -99,26 +97,35 @@
                 </div>
             </div>
             <!--Affichage des Pokemon-->
-            <div class ="row container-fluid">
+            <div class ="row container bandeau">
                 <c:forEach var="computer" items="${computers}">
-                    <a href="${pageContext.request.contextPath}/getComputer?id=${computer.id}"
-                       class="pokeliste container col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2 slide">
-                        <!--Utilisation du filtre custom pour récupérer les pokemons voulus dans l'ordre voulu-->
-                        <div class="separator"></div>
-                        <div class="img-circle-container hvr-bob hvr-float-shadow">
+                    <div class="panel panel-default col-sm-12 col-md-4 col-md-offset-1">
+                        <div class="container-justified">
+                            <div class="item">Nom :</div>
+                            <div class="item" >${ computer.name }</div>
                         </div>
-                        <!--Nom et numéro du pokemon-->
-                        <h4><c:out value="${computer.name}"/></h4>
-                        <!--Types-->
-                        <div class="flex-container">
-                            <div class="flex-item type">
-                                <c:out value="${computer.introduced}"/>
-                            </div>
-                            <div class="flex-item type">
-                                <c:out value="${computer.discontinued}"/>
+                        <!--Separator pour que les deux items soient écartés d'un certain espacement-->
+                        <div class="separator-taille-poids"></div>
+
+                        <div  class="container-justified" >
+                            <div class="item">Company :</div>
+                            <a class="item" href="${pageContext.request.contextPath}/getCompany?id=${ computer.company.id }">${ computer.company.name }</a>
+                        </div>
+                        <div  class="container-justified">
+                            <div class="item">Entré le :</div>
+                            <div class="item">
+                                    ${ computer.introduced }
                             </div>
                         </div>
-                    </a>
+                        <div  class="container-justified">
+                            <div class="item">Sortie le :</div>
+                            <div class="item">${computer.discontinued }
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+
+                        </div>
+                    </div>
                 </c:forEach>
             </div>
         </div>

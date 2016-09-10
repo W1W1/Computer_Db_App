@@ -9,7 +9,74 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Lato:300,400,700" !defa
 $web-font-path: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" !default;
 @import url($web-font-path);
 
+//Custom ======================================================================
+// .pager{
+//
+//   li > a{
+//   	border-radius: 50%;
+//   	padding-bottom: 0px;
+//   	padding-top: 0px;
+//   	padding-left: $font-size-small ;
+//   	padding-right: $font-size-small;
+//   	background: $gray-light;
+//   	border:none;
+//     font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+//   	font-size: 3em;
+//   	line-height: normal;
+//   }
+//
+//    li>a:hover{
+//   	color: $brand-custom;
+//   }
+// }
+
+a:hover{
+  text-decoration: none;
+}
+
+.bandeau{
+  margin-top: 2em;
+  background-color: $bloir-lighter;
+  padding-top: 3em;
+  padding-bottom: 1em;
+}
+
+.description p{
+font-size: 1.4em;
+font-family: Roboto;
+color: #FFFFFF;
+}
+
+.informations{
+background-color: $brand-primary;
+padding: 7px;
+font-family: Roboto;
+font-size: 1.4em;
+width: 95%;
+margin: auto;
+margin-bottom: 1em;
+
+}
+
+.item-container{
+  display: table;
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
+  border-collapse: separate;
+ .item,
+ .item-group,
+ .input,
+  .label{
+    padding-left: 2em;
+    float: none;
+    display: table-cell;
+    width: 1%;
+  }
+}
+
 // Navbar =====================================================================
+
 
 .navbar {
   @include box-shadow(none);

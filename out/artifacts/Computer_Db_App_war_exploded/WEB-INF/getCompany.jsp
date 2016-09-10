@@ -20,11 +20,9 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 
     <!-- Bootstrap Material Design -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootswatch.nested.css" rel="stylesheet">
 
 
-    <link href="css/pokemon.css" rel="stylesheet">
-    <link href="css/custom-nav.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet" media="all">
 
     <%--Bootstrap javascrpit plugin--%>
@@ -65,8 +63,8 @@
         </div>
     </div>
 </div>
-<div class="container-fluid main" id="Top">
-    <div class="container cadre" >
+<div class="container-fluid " id="Top">
+    <div class="container bandeau" >
             <div class="row">
                 <div class="col-sm-12">
                     <%--<div>--%>

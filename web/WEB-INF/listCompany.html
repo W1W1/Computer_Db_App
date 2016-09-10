@@ -2,8 +2,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Alex
-  Date: 9/8/2016
-  Time: 8:52 PM
+  Date: 9/9/2016
+  Time: 11:35 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page pageEncoding="UTF-8" %>
@@ -13,16 +13,13 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Computer Creation</title>
+    <title>Computer List</title>
     <!-- Material Design fonts -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 
     <!-- Bootstrap Material Design -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootswatch.nested.css" rel="stylesheet">
 
-
-    <link href="css/pokemon.css" rel="stylesheet">
-    <link href="css/custom-nav.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet" media="all">
 
     <%--Bootstrap javascrpit plugin--%>
@@ -63,51 +60,60 @@
         </div>
     </div>
 </div>
-<div class="container-fluid main" id="Top">
+<div class="container-fluid main" >
+    <!--Utilisation du Infinite Scroll pour limiter les chargements d'image
+    distance mise à 0.5 pour mettre en exergue la fonctionalité,
+    sa valeur en production serait de 2 pour qu'on ne touche jamais le bas de la page-->
     <div class="container cadre" >
-        <div id = "Pokemon">
-            <!--Informations sur l'entreprise-->
-            <div class="row">
-                <div class="col-sm-12">
-                    <form method="post" action="createComputer" id="computer_input">
-
-                        <label for="computerName">Nom de l'ordinateur :  </label>
-                        <input type="text" id="computerName" name="computerName" value="" size="20" maxlength="20"/>
+        <div>
+            <!--Paramètre de filtre et recherche avancés-->
+            <div class="row container-fluid recherche-avance">
+                <div class ="row container-fluid">
+                    <button id="hideBtn" >Paramètres avancés</button>
+                </div>
+                <div class="row container-fluid" ng-show="main.click">
+                    <div class="row">
+                        <img class="btn-close" />
+                    </div>
+                    <!--Ajout de ng-class pour lier l'ordre à la flèche allant vers le haut ou le bas
+                    Utilisation de ng-click-->
+                    <form id="page_specifications" method="post" action="listCompany">
+                        <label for="page">Numero de page :  </label>
+                        <input type="number" id="page" name="page" value="<c:out value="${page}"/>" size="30" maxlength="30" />
                         <br />
 
-                        <label for="companyName">Nom de l'entreprise :  </label>
-
-                        <select id="companyName" name="companyName" form="computer_input">
-                            <c:forEach var="company" items="${companies}">
-                                <option value="<c:out value="${company.id}"/>"><c:out value="${company.name}"/></option>
-                            </c:forEach>
-                            <%--<option value="1">Apple Inc.</option>--%>
-                            <%--<option value="2">Thinking Machines</option>--%>
-                            <%--<option value="3">RCA</option>--%>
-                            <%--<option value="4">Netronics</option>--%>
-
+                        <label for="nbElements">Nombre d'entrprises par page :  </label>
+                        <select id="nbElements" name="nbElements" form="page_specifications">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
                         </select>
                         <br />
-
-                        <label for="introduced">Date d'entree :  </label>
-                        <input type="date" id="introduced" name="introduced" value="" size="20" maxlength="20"/>
-                        <br />
-
-                        <label for="discontinued">Date de sortie :  </label>
-                        <input type="date" id="discontinued" name="discontinued" value="" size="20" maxlength="20"/>
-                        <br />
-
-
-
-                        <input type="submit" value="Valider" class="button"  />
+                        <input type="submit" value="Valider"  />
                     </form>
                 </div>
             </div>
+            <!--Affichage des Pokemon-->
+            <div class ="row container-fluid">
+                <c:forEach var="company" items="${companies}">
+                    <a href="${pageContext.request.contextPath}/getCompany?id=${company.id}"
+                       class="pokeliste container col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2 slide">
+                        <!--Utilisation du filtre custom pour récupérer les pokemons voulus dans l'ordre voulu-->
+                        <div class="separator"></div>
+                        <div class="img-circle-container hvr-bob hvr-float-shadow">
+                            <!--Nom et numéro du pokemon-->
+                            <h4><c:out value="${company.name}"/></h4>
+                        </div>
 
+                    </a>
+                </c:forEach>
+            </div>
         </div>
     </div>
 </div>
 
 
 </body>
+</html>
 
