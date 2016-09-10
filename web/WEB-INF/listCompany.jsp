@@ -19,12 +19,14 @@
 
     <!-- Bootstrap Material Design -->
     <link href="css/bootswatch.nested.css" rel="stylesheet">
+    <link href="../css/bootswatch.nested.css" rel="stylesheet">
 
     <link href="css/hover.css" rel="stylesheet" media="all">
 
     <%--Bootstrap javascrpit plugin--%>
     <script type='text/javascript' src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script type='text/javascript' src="js/bootstrap.js"></script>
+    <script type='text/javascript' src="../js/bootstrap.js"></script>
 
     <meta charset="utf-8"/>
     <title>Test</title>
@@ -80,7 +82,7 @@
                     <form id="page_specifications" method="post" action="listCompany">
                         <label for="page">Numero de page :  </label>
                         <input type="number" id="page" name="page" value="<c:out value="${page}"/>" size="30" maxlength="30" />
-                        <br />
+
 
                         <label for="nbElements">Nombre d'entrprises par page :  </label>
                         <select id="nbElements" name="nbElements" form="page_specifications">
@@ -89,7 +91,6 @@
                             <option value="50">50</option>
                             <option value="100">100</option>
                         </select>
-                        <br />
                         <input type="submit" value="Valider"  />
                     </form>
                 </div>
@@ -116,4 +117,3 @@
 
 </body>
 </html>
-

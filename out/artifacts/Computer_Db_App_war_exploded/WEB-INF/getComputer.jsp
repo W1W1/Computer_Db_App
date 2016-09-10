@@ -1,12 +1,12 @@
 <%@ page import="Util.Computer" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %><%--
-  Created by IntelliJ IDEA.
-  User: Richard-DT
-  Date: 08/09/2016
-  Time: 00:45
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.Date" %>
+-->
+  <!--Created by IntelliJ IDEA.-->
+  <!--User: Richard-DT-->
+  <!--Date: 08/09/2016-->
+  <!--Time: 00:45-->
+  <!--To change this template use File | Settings | File Templates.-->
 <%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -19,12 +19,14 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 
     <!-- Bootstrap Material Design -->
+    <link href="../css/bootswatch.nested.css" rel="stylesheet">
     <link href="css/bootswatch.nested.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet" media="all">
 
-    <%--Bootstrap javascrpit plugin--%>
+    <!--Bootstrap javascrpit plugin-->
     <script type='text/javascript' src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script type='text/javascript' src="js/bootstrap.js"></script>
+    <script type='text/javascript' src="../js/bootstrap.js"></script>
+    <script type='text/javascript' src="js/bootstrap.js"></script>-->
 
     <meta charset="utf-8"/>
     <title>Test</title>
@@ -63,35 +65,35 @@
     </div>
 </div>
 <div class="container-fluid bandeau" id="Top">
-    <div class=>
-        <div id="Pokemon">
+    <div >
+        <div >
             <div class="col-sm-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class="container-justified">
+                        <div class="item-container">
                             <a class="item" href="${pageContext.request.contextPath}/getComputer?id=${computer.id-1}">&lsaquo;</a>
                             <h1 class="item">Information de l'ordinateur </h1>
                             <a class="item" href="${pageContext.request.contextPath}/getComputer?id=${computer.id+1}">&rsaquo;</a>
                         </div>
                     </div>
-                    <div class="container-justified">
+                    <div class="item-container">
                         <div class="item">Nom :</div>
                         <div class="item" >${ computer.name }</div>
                     </div>
                     <!--Separator pour que les deux items soient écartés d'un certain espacement-->
                     <div class="separator-taille-poids"></div>
 
-                    <div  class="container-justified" >
-                        <div class="item" href="${pageContext.request.contextPath}/getCompany?id=${ computer.company.id }">Company :</div>
-                        <a class="item" href="${pageContext.request.contextPath}/getCompany?id=${ computer.company.id }">${ computer.company.name }</a>
-                    </div>
-                    <div  class="container-justified">
+                    <a  class="item-container" href="${pageContext.request.contextPath}/getCompany?id=${ computer.company.id }" >
+                        <div class="item" >Company :</div>
+                        <div class="item" >${ computer.company.name }</div>
+                    </a>
+                    <div  class="item-container">
                         <div class="item">Entré le :</div>
                         <div class="item">
                             ${ computer.introduced }
                         </div>
                     </div>
-                    <div  class="container-justified">
+                    <div  class="item-container">
                         <div class="item">Sortie le :</div>
                         <div class="item">${computer.discontinued }
                         </div>

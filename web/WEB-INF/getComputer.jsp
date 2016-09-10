@@ -1,14 +1,13 @@
-<!--<%&#45;&#45;<%@ page import="Util.Computer" %>&#45;&#45;%>-->
-<!--<%&#45;&#45;<%@ page import="java.text.SimpleDateFormat" %>&#45;&#45;%>-->
-<!--<%&#45;&#45;<%@ page import="java.util.Date" %>&#45;&#45;%>-->
-<!--<%&#45;&#45;-->
+<%@ page import="Util.Computer" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+-->
   <!--Created by IntelliJ IDEA.-->
   <!--User: Richard-DT-->
   <!--Date: 08/09/2016-->
   <!--Time: 00:45-->
   <!--To change this template use File | Settings | File Templates.-->
-<!--&#45;&#45;%>-->
-<!--<%&#45;&#45;<%@ page pageEncoding="UTF-8" %>&#45;&#45;%>-->
+<%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 
@@ -21,13 +20,13 @@
 
     <!-- Bootstrap Material Design -->
     <link href="../css/bootswatch.nested.css" rel="stylesheet">
-    <!--<link href="css/bootswatch.nested.css" rel="stylesheet">-->
+    <link href="css/bootswatch.nested.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet" media="all">
 
     <!--Bootstrap javascrpit plugin-->
     <script type='text/javascript' src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script type='text/javascript' src="../js/bootstrap.js"></script>
-    <!--<script type='text/javascript' src="js/bootstrap.js"></script>-->
+    <script type='text/javascript' src="js/bootstrap.js"></script>-->
 
     <meta charset="utf-8"/>
     <title>Test</title>

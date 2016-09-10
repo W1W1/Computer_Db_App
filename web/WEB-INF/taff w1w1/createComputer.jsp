@@ -1,38 +1,32 @@
-
-<%@ page import="Util.Company" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--
   Created by IntelliJ IDEA.
   User: Alex
   Date: 9/8/2016
-  Time: 12:09 PM
+  Time: 8:52 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-
 <head>
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>${ company.name }</title>
+    <title>Computer Creation</title>
     <!-- Material Design fonts -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-
     <!-- Bootstrap Material Design -->
-    <link href="css/bootswatch.nested.css" rel="stylesheet">
-    <link href="../css/bootswatch.nested.css" rel="stylesheet">
 
-
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/pokemon.css" rel="stylesheet">
+    <link href="css/custom-nav.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet" media="all">
 
     <%--Bootstrap javascrpit plugin--%>
     <script type='text/javascript' src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script type='text/javascript' src="js/bootstrap.js"></script>
-    <script type='text/javascript' src="../js/bootstrap.js"></script>
 
     <meta charset="utf-8"/>
-    <title>Company</title>
+    <title>Test</title>
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top" >
@@ -65,42 +59,39 @@
         </div>
     </div>
 </div>
-<div class="container-fluid " id="Top">
-    <div class="container bandeau" >
+<div class="container-fluid main" id="Top">
+    <div class="container cadre" >
+        <div id = "Pokemon">
+            <!--Informations sur l'entreprise-->
             <div class="row">
                 <div class="col-sm-12">
-                    <%--<div>--%>
-                    <%--${ computer.name } ${ computer.company.name }--%>
-                    <%--</div>--%>
-                    <div class="informations-pokemon ">
+                    <form method="post" action="createComputer" id="computer_input">
 
-                        <div class="flex-container">
-                            <div class="flex-item enonce">Name :</div>
-                            <div class="flex-item donnee">${ company.name }</div>
-                        </div>
-                    </div>
-                    <div class ="row container-fluid">
-                        <c:forEach var="computer" items="${computers}">
-                            <a href="${pageContext.request.contextPath}/getComputer?id=${computer.id}"
-                               class="pokeliste container col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2 slide">
-                                <!--Utilisation du filtre custom pour récupérer les pokemons voulus dans l'ordre voulu-->
-                                <div class="separator"></div>
-                                <div class="img-circle-container hvr-bob hvr-float-shadow">
-                                </div>
-                                <!--Nom et numéro du pokemon-->
-                                <h4><c:out value="${computer.name}"/></h4>
-                                <!--Types-->
-                                <div class="flex-container">
-                                    <div class="flex-item type">
-                                        <c:out value="${computer.introduced}"/>
-                                    </div>
-                                    <div class="flex-item type">
-                                        <c:out value="${computer.discontinued}"/>
-                                    </div>
-                                </div>
-                            </a>
-                        </c:forEach>
-                    </div>
+                        <label for="computerName">Nom de l'ordinateur :  </label>
+                        <input type="text" id="computerName" name="computerName" value="" size="20" maxlength="20"/>
+                        <br />
+
+                        <label for="companyName">Nom de l'entreprise :  </label>
+
+                        <select id="companyName" name="companyName" form="computer_input">
+                            <c:forEach var="company" items="${companies}">
+                                <option value="<c:out value="${company.id}"/>"><c:out value="${company.name}"/></option>
+                            </c:forEach>
+                        </select>
+                        <br />
+
+                        <label for="introduced">Date d'entree :  </label>
+                        <input type="date" id="introduced" name="introduced" value="" size="20" maxlength="20"/>
+                        <br />
+
+                        <label for="discontinued">Date de sortie :  </label>
+                        <input type="date" id="discontinued" name="discontinued" value="" size="20" maxlength="20"/>
+                        <br />
+
+
+
+                        <input type="submit" value="Valider" class="button"  />
+                    </form>
                 </div>
             </div>
 
@@ -110,3 +101,4 @@
 
 
 </body>
+

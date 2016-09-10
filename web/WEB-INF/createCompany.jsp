@@ -1,4 +1,4 @@
-<%--<%@ page import="Util.Company" %>--%>
+<%@ page import="Util.Company" %>
 
 <%--
 Created by IntelliJ IDEA.
@@ -22,6 +22,7 @@ To change this template use File | Settings | File Templates.
     <!-- Bootstrap Material Design -->
     <!--<link href="css/bootswatch.nested.css" rel="stylesheet">-->
     <link href="../css/bootswatch.nested.css" rel="stylesheet">
+    <link href="css/bootswatch.nested.css" rel="stylesheet">
 
 
     <link href="css/hover.css" rel="stylesheet" media="all">
@@ -30,6 +31,7 @@ To change this template use File | Settings | File Templates.
     <script type='text/javascript' src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <!--<script type='text/javascript' src="js/bootstrap.js"></script>-->
     <script type='text/javascript' src="../js/bootstrap.js"></script>
+    <script type='text/javascript' src="js/bootstrap.js"></script>
 
     <meta charset="utf-8"/>
     <title>Test</title>
