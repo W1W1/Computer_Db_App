@@ -101,7 +101,7 @@ sa valeur en production serait de 2 pour qu'on ne touche jamais le bas de la pag
                 <div class="panel panel-default ">
                     <div class="panel-heading">
                         <div class="item-container">
-                            <div class="item">${ computer.name }</div>
+                            <a href="${pageContext.request.contextPath}/getComputer?id=${ computer.id }" class="item">${ computer.name }</a>
                         </div>
                     </div>
 

@@ -40,8 +40,16 @@ public class ListCompanyServlet extends HttpServlet {
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 
 
-        int page = Integer.valueOf(request.getParameter("page"));
-        int nbElements = Integer.valueOf(request.getParameter("nbElements"));
+        int page = PAGE;
+        if (request.getParameter("page") != null &&
+                !request.getParameter("page").equals("")) {
+            page = Integer.valueOf(request.getParameter("page"));
+        }
+        int nbElements = NB_ELEMENTS;
+        if (request.getParameter("nbElements") != null &&
+                !request.getParameter("nbElements").equals("")) {
+            nbElements = Integer.valueOf(request.getParameter("nbElements"));
+        }
         String url= String.format(request.getContextPath() + "/listCompany?page=%d&nbElements=%d",page,nbElements);
         response.sendRedirect(url);
     }

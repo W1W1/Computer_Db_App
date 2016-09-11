@@ -22,8 +22,11 @@ public class GetComputerServlet extends HttpServlet {
         {
             id = Integer.valueOf(request.getParameter("id"));
         }
-        ComputerDTO computer = new ComputerDTO(ManageComputer.getComputer(id));
-        String testMsg = "";
+        Computer tmpComputer = ManageComputer.getComputer(id);
+        ComputerDTO computer = new ComputerDTO();
+        if (tmpComputer != null) {
+            computer = new ComputerDTO(ManageComputer.getComputer(id));
+        }
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
         request.setAttribute("computer", computer);
         request.setAttribute("sdf", sdf);
