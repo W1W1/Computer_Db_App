@@ -22,6 +22,7 @@ public class GetComputerServlet extends HttpServlet {
         {
             id = Integer.valueOf(request.getParameter("id"));
         }
+
         Computer tmpComputer = ManageComputer.getComputer(id);
         ComputerDTO computer = new ComputerDTO();
         if (tmpComputer != null) {
@@ -29,6 +30,7 @@ public class GetComputerServlet extends HttpServlet {
         }
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
         request.setAttribute("computer", computer);
+        request.setAttribute("id", id);
         request.setAttribute("sdf", sdf);
         this.getServletContext().getRequestDispatcher("/WEB-INF/getComputer.jsp").forward(request, response);
     }
