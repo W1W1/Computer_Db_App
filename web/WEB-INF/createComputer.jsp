@@ -29,6 +29,8 @@ To change this template use File | Settings | File Templates.
     <script type='text/javascript' src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script type='text/javascript' src="../js/bootstrap.js"></script>
     <script type='text/javascript' src="js/bootstrap.js"></script>
+    <script type='text/javascript' src="js/inputVerification.js"></script>
+    <script type='text/javascript' src="../js/inputVerification.js"></script>
     <!--<script type='text/javascript' src="js/bootstrap.js"></script>-->
 
     <meta charset="utf-8"/>
@@ -80,16 +82,17 @@ To change this template use File | Settings | File Templates.
                     </div>
                     <div class="panel-body">
                         <form method="post" action="createComputer" id="computer_input">
-                            <div class="form-group item-container has-error">
+                            <div class="form-group item-container ">
                                 <div class="item"><label for="computerName">Nom de l'ordinateur : </label></div>
-                                <div class="item"><input type="text" id="computerName" name="computerName" value=""
-                                                         size="20"
-                                                         maxlength="20"/></div>
+                                <div class="item"><input type="text" onkeypress="verfyText(this)"
+                                                         class="form-control" name="computerName" value=""
+                                                         size="20" maxlength="20"/></div>
                             </div>
 
-                            <div class="item-container form-group has-error">
+                            <div class="item-container form-group">
                                 <div class="item"><label for="companyName">Nom de l'entreprise : </label></div>
-                                <div class="item"><select id="companyName" name="companyName" form="computer_input">
+                                <div class="item"><select id="companyName" class="form-control"
+                                                          name="companyName" form="computer_input">
                                     <c:forEach var="company" items="${companies}">
                                         <option value="<c:out value=" ${company.id}
                                         "/>">
@@ -113,20 +116,21 @@ To change this template use File | Settings | File Templates.
                                 </select>
                                 </div>
                             </div>
-                            <div class="form-group item-container has-error">
+                            <div class="form-group item-container ">
                                 <div class="item"><label  for="introduced">Date d'entree : </label></div>
-                                <div class="item"><input  type="date" id="introduced"
-                                                         name="introduced" value="" size="20"
+                                <div class="item"><input class="form-control" type="date" id="introduced"
+                                                         name="introduced" onkeyup="VerifyDate(this)"
+                                                         value="" size="20"
                                                          maxlength="20"/></div>
                             </div>
-                            <div class="item-container">
+                            <div class="form-group item-container">
                                 <div class="item"><label for="discontinued">Date de sortie : </label></div>
-                                <div class="item"><input class="has-error" type="date" id="discontinued"
-                                                         name="discontinued" value="" size="20"
+                                <div class="item"><input class="form-control" type="date" id="discontinued"
+                                                         name="discontinued" onkeyup="VerifyDate(this)" value="" size="20"
                                                          maxlength="20"/></div>
                             </div>
                             <div class="item-container">
-                                <div class="item"><input type="submit" value="Valider" class="btn-success"/></div>
+                                <div class="item"><input type="submit" value="Valider" onsubmit="verifyAll()" class="btn-success"/></div>
                             </div>
                         </form>
                     </div>
@@ -139,7 +143,6 @@ To change this template use File | Settings | File Templates.
         </div>
     </div>
 </div>
-
-
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
