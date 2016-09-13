@@ -59,23 +59,37 @@
                 </li>
                 <li><a href="${pageContext.request.contextPath}/Apropos">A propos</a></li>
             </ul>
+            <form id="company_search" class="navbar-form navbar-right" role="search" method="post">
+                <div class="form-group">
+                    <input id="searchMe" name="searchMe" class="form-control" placeholder="Chercher une entreprise..." type="text">
+                </div>
+                <button type="submit" class="btn btn-default">Rechercher</button>
+                <input type="hidden" name="form_use" value="search"/>
+            </form>
         </div>
     </div>
 </div>
 <div class="container-fluid main" >
+
     <!--Utilisation du Infinite Scroll pour limiter les chargements d'image
     distance mise à 0.5 pour mettre en exergue la fonctionalité,
     sa valeur en production serait de 2 pour qu'on ne touche jamais le bas de la page-->
     <div class="container cadre" >
+
         <div>
             <!--Paramètre de filtre et recherche avancés-->
+
             <div class="row container-fluid recherche-avance">
                 <div class ="row container-fluid">
                     <button id="hideBtn" >Paramètres avancés</button>
                 </div>
+
                 <div class="row container-fluid" ng-show="main.click">
                     <div class="row">
                         <img class="btn-close" />
+                    </div>
+                    <div style="text-align: center">
+                        <span style="color:red;"><strong><c:out value="${searchEmpty}"/></strong></span>
                     </div>
                     <!--Ajout de ng-class pour lier l'ordre à la flèche allant vers le haut ou le bas
                     Utilisation de ng-click-->
@@ -86,15 +100,46 @@
 
                         <label for="nbElements">Nombre d'entrprises par page :  </label>
                         <select id="nbElements" name="nbElements" form="page_specifications">
-                            <option value="10">10</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
+                            <c:choose>
+                                <c:when test="${nbElements==10}">
+                                    <option selected value="10">10</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="10">10</option>
+                                </c:otherwise>
+                            </c:choose>
+                            <c:choose>
+                                <c:when test="${nbElements==25}">
+                                    <option selected value="25">25</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="25">25</option>
+                                </c:otherwise>
+                            </c:choose>
+                            <c:choose>
+                                <c:when test="${nbElements==50}">
+                                    <option selected value="50">50</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="50">50</option>
+                                </c:otherwise>
+                            </c:choose>
+                            <c:choose>
+                                <c:when test="${nbElements==100}">
+                                    <option selected value="100">100</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="100">100</option>
+                                </c:otherwise>
+                            </c:choose>
+
                         </select>
                         <input type="submit" value="Valider"  />
+                        <input type="hidden" name="form_use" value="pagination"/>
                     </form>
                 </div>
             </div>
+
             <!--Affichage des Pokemon-->
             <div class ="row container-fluid">
                 <c:forEach var="company" items="${companies}">

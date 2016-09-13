@@ -140,4 +140,37 @@ public class ManageCompany{
             session.close();
         }
     }
+
+    public static List<Company> listCompany(int nbElements, int page) {
+        try {
+            factory = new Configuration().configure().buildSessionFactory();
+        } catch (Throwable ex) {
+            System.err.println("Failed to create sessionFactory object." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            String str ="";
+
+            org.hibernate.Query query = session.createQuery("FROM Company");
+
+            query.setFirstResult((page-1)*nbElements);
+            query.setMaxResults(nbElements*(page));
+            List companyList = query.list();
+            for (Iterator iterator = companyList.iterator(); iterator.hasNext(); ) {
+                Company company = (Company) iterator.next();
+                str+=company;
+            }
+            return companyList;
+
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return null;
+        } finally {
+            session.close();
+        }
+    }
 }

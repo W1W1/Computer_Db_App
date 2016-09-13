@@ -75,24 +75,25 @@ To change this template use File | Settings | File Templates.
         </div>
     </div>
 </div>
+
+
 <!--Utilisation du Infinite Scroll pour limiter les chargements d'image
 distance mise à 0.5 pour mettre en exergue la fonctionalité,
 sa valeur en production serait de 2 pour qu'on ne touche jamais le bas de la page-->
 <div>
     <div class="container bandeau col-md-10 col-sm-12 col-md-offset-1">
         <!--Paramètre de filtre et recherche avancés-->
-        <div style="text-align: center">
-            <span style="color:red;"><strong><c:out value="${searchEmpty}"/></strong></span>
-        </div>
-
         <div class="row container-fluid recherche-avance">
             <!--Ajout de ng-class pour lier l'ordre à la flèche allant vers le haut ou le bas
             Utilisation de ng-click-->
+            <div style="text-align: center">
+                <span style="color:red;"><strong><c:out value="${searchEmpty}"/></strong></span>
+            </div>
 
             <form id="page_specifications" method="post" action="listComputer">
                 <div class="item-container">
                     <div class="item"><label for="page">Numero de page : </label></div>
-                    <div class="item"><input type="number" id="page" name="page" value="<c:out value=" ${page}"/>"
+                    <div class="item"><input type="number" id="page" name="page" value="<c:out value="${page}"/>"
                         size="30" maxlength="30" />
                     </div>
                     <div class="item"><label for="nbElements">Nombre d'ordinateurs par page : </label></div>
