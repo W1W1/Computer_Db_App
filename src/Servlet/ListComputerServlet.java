@@ -19,35 +19,51 @@ import java.util.List;
 
 public class ListComputerServlet extends HttpServlet {
     public final static int PAGE = 1;
-    public final static int NB_ELEMENTS = 20;
+    public final static int NB_ELEMENTS = 25;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int nbElements = NB_ELEMENTS;
         int page = PAGE;
+        String searchEmpty = "Pas d'ordinateurs trouvés sous ce nom.";
+        List<Computer> computers;
+
         if (request.getParameter("page") != null) {
             page = Integer.valueOf(request.getParameter("page"));
         }
         if (request.getParameter("nbElements") != null) {
             nbElements = Integer.valueOf(request.getParameter("nbElements"));
         }
-        List<Computer> computers;
+        if (request.getParameter("sE") == null) {
+            searchEmpty = "";
+        }
+        if (request.getParameter("result") == null) {
+            computers = ManageComputer.listComputer(nbElements, page);;
+        }
+        else
+        {
+            computers = ManageComputer.searchComputer(request.getParameter("result"));
+        }
 
         ArrayList<ComputerDTO> computerDTOs = new ArrayList<>();
 
-        computers = ManageComputer.listComputer(nbElements, page);
+
         if (computers != null) {
             for (Computer computer :
                     computers) {
                 computerDTOs.add(new ComputerDTO(computer));
             }
         }
+
         request.setAttribute("page", page);
         request.setAttribute("nbElements", nbElements);
         request.setAttribute("computers", computerDTOs);
+        request.setAttribute("searchEmpty", searchEmpty);
         this.getServletContext().getRequestDispatcher("/WEB-INF/listComputer.jsp").forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String form=request.getParameter("form_use");
+
         int page = PAGE;
         if (request.getParameter("page") != null &&
                 !request.getParameter("page").equals("")) {
@@ -58,8 +74,49 @@ public class ListComputerServlet extends HttpServlet {
                 !request.getParameter("nbElements").equals("")) {
             nbElements = Integer.valueOf(request.getParameter("nbElements"));
         }
-        String url = String.format(request.getContextPath() + "/listComputer?page=%d&nbElements=%d", page, nbElements);
-        response.sendRedirect(url);
+
+        if(form.equals("pagination")){
+            String url = String.format(request.getContextPath() + "/listComputer?page=%d&nbElements=%d", page, nbElements);
+            response.sendRedirect(url);
+        }else if(form.equals("search")){
+            //si la barre de recherche est vide, ne rien faire
+
+            String searchMe = request.getParameter("searchMe");
+
+            System.out.println("item searched : \"" + searchMe + "\"");
+
+            if (searchMe.equals("")){
+                String url = String.format(request.getContextPath() + "/listComputer?page=%d&nbElements=%d", page, nbElements);
+                response.sendRedirect(url);
+            }
+
+            //Recherche d'ordinateurs
+            List<Computer> searchResults;
+            searchResults = ManageComputer.searchComputer(searchMe);
+
+            //gestion du résultat obtenu
+            if (searchResults.size() != 0) //il y a au moins un résultat
+            {
+                if (searchResults.size() == 1) //il y a un résultat
+                {
+//                    String url = request.getContextPath() + "/getComputer?id="+ searchResults.get(0).getId();
+                    String url = String.format((request.getContextPath() + "/getComputer?id=%d"), searchResults.get(0).getId());
+                    response.sendRedirect(url);
+                }
+                else //il y a plus d'un résultat
+                {
+                    String url = String.format(request.getContextPath() + "/listComputer?page=%d&nbElements=%d&result=%s", 1, nbElements,searchMe);
+                    response.sendRedirect(url);
+                }
+            }
+            else //pas de résultats: renvoyer sur la liste avec flag pour message d'erreur
+            {
+                String url = String.format(request.getContextPath() + "/listComputer?page=%d&nbElements=%d&sE=%s", page, nbElements,"y");
+                response.sendRedirect(url);
+            }
+
+
+        }
     }
 
 }

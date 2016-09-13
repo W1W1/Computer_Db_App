@@ -65,6 +65,13 @@ To change this template use File | Settings | File Templates.
                 </li>
                 <li><a href="${pageContext.request.contextPath}/Apropos">A propos</a></li>
             </ul>
+            <form id="computer_search" class="navbar-form navbar-right" role="search" method="post">
+                <div class="form-group">
+                    <input id="searchMe" name="searchMe" class="form-control" placeholder="Chercher un ordinateur..." type="text">
+                </div>
+                <button type="submit" class="btn btn-default">Rechercher</button>
+                <input type="hidden" name="form_use" value="search"/>
+            </form>
         </div>
     </div>
 </div>
@@ -74,9 +81,14 @@ sa valeur en production serait de 2 pour qu'on ne touche jamais le bas de la pag
 <div>
     <div class="container bandeau col-md-10 col-sm-12 col-md-offset-1">
         <!--Paramètre de filtre et recherche avancés-->
+        <div style="text-align: center">
+            <span style="color:red;"><strong><c:out value="${searchEmpty}"/></strong></span>
+        </div>
+
         <div class="row container-fluid recherche-avance">
             <!--Ajout de ng-class pour lier l'ordre à la flèche allant vers le haut ou le bas
             Utilisation de ng-click-->
+
             <form id="page_specifications" method="post" action="listComputer">
                 <div class="item-container">
                     <div class="item"><label for="page">Numero de page : </label></div>
@@ -85,14 +97,43 @@ sa valeur en production serait de 2 pour qu'on ne touche jamais le bas de la pag
                     </div>
                     <div class="item"><label for="nbElements">Nombre d'ordinateurs par page : </label></div>
                     <div class="item"><select id="nbElements" name="nbElements" form="page_specifications">
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                        <option value="500">500</option>
+                        <c:choose>
+                            <c:when test="${nbElements==25}">
+                                <option selected value="25">25</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="25">25</option>
+                            </c:otherwise>
+                        </c:choose>
+                        <c:choose>
+                            <c:when test="${nbElements==50}">
+                                <option selected value="50">50</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="50">50</option>
+                            </c:otherwise>
+                        </c:choose>
+                        <c:choose>
+                            <c:when test="${nbElements==100}">
+                                <option selected value="100">100</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="100">100</option>
+                            </c:otherwise>
+                        </c:choose>
+                        <c:choose>
+                            <c:when test="${nbElements==500}">
+                                <option selected value="500">500</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="500">500</option>
+                            </c:otherwise>
+                        </c:choose>
                     </select>
                     </div>
                     <div class="item"><input type="submit" class="btn-success" value="Valider"/></div>
                 </div>
+                <input type="hidden" name="form_use" value="pagination"/>
             </form>
         </div>
         <!--Affichage des Pokemon-->

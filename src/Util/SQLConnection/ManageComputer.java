@@ -3,11 +3,9 @@ package Util.SQLConnection;
 
 import Util.Company;
 import Util.Computer;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
 import javax.management.Query;
 import java.math.BigInteger;
@@ -186,6 +184,28 @@ public class ManageComputer {
             if (tx != null) tx.rollback();
             e.printStackTrace();
             return 0;
+        } finally {
+            session.close();
+        }
+    }
+
+    public static List<Computer> searchComputer(String search) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Criteria cr = session.createCriteria(Computer.class);
+            cr.add(Restrictions.like("name", search+"%"));
+            List computerList = cr.list();
+            for (Iterator iterator = computerList.iterator(); iterator.hasNext(); ) {
+                Computer computer = (Computer) iterator.next();
+                System.out.println(computer);
+            }
+            return computerList;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return null;
         } finally {
             session.close();
         }

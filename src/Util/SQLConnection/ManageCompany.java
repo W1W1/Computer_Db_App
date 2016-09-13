@@ -118,6 +118,7 @@ public class ManageCompany{
             session.close();
         }
     }
+
     public static List<Company> searchCompany(String search) {
         Session session = factory.openSession();
         Transaction tx = null;
