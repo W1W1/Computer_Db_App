@@ -77,3 +77,9 @@ function VerifyAll() {
         }
     }
 }
+function confirmDelete() {
+    if (confirm("Etes-vous sur de vouloir supprimer cet ordinateur?")) {
+        document.getElementById("computerDelete").submit();
+    }
+    return false;
+}

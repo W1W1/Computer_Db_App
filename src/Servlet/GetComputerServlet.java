@@ -20,7 +20,8 @@ public class GetComputerServlet extends HttpServlet {
         int id = 1;
         if (request.getParameter("id")!=null)
         {
-            id = Integer.valueOf(request.getParameter("id"));
+            System.out.printf("//"+request.getParameter("id")+"//");
+            id = Integer.valueOf(String.trim(request.getParameter("id")));
         }
 
         Computer tmpComputer = ManageComputer.getComputer(id);

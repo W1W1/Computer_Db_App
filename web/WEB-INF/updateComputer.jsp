@@ -1,12 +1,15 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--
-Created by IntelliJ IDEA.
-User: Alex
-Date: 9/8/2016
-Time: 8:52 PM
-To change this template use File | Settings | File Templates.
+  Created by IntelliJ IDEA.
+  User: Alex
+  Date: 9/13/2016
+  Time: 9:01 PM
+  To change this template use File | Settings | File Templates.
 --%>
-<%@ page pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.Date"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -85,7 +88,7 @@ To change this template use File | Settings | File Templates.
                             <div class="form-group item-container ">
                                 <div class="item"><label for="computerName">Nom de l'ordinateur : </label></div>
                                 <div class="item"><input id="computerName" type="text" onkeypress="verfyText(this)"
-                                                         class="form-control" name="computerName" value=""
+                                                         class="form-control" name="computerName" value="<c:out value="${computer.name}"/>"
                                                          size="20" maxlength="20"/></div>
                             </div>
 
@@ -94,32 +97,46 @@ To change this template use File | Settings | File Templates.
                                 <div class="item"><select id="companyName" class="form-control"
                                                           name="companyName" form="computer_input">
                                     <c:forEach var="company" items="${companies}">
-                                        <option value="<c:out value=" ${company.id}
-                                        "/>">
-                                        <c:out
-                                                value="${company.name}"/>
-                                        </option>
+                                        <c:choose>
+                                            <c:when test="${company.id==computer.company.id}">
+                                                <option selected value="<c:out value=" ${company.id}"/>"><c:out value="${company.name}"/></option>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <option value="<c:out value=" ${company.id}"/>"><c:out value="${company.name}"/></option>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </c:forEach>
                                 </select>
                                 </div>
                             </div>
+
                             <div class="form-group item-container ">
                                 <div class="item"><label  for="introduced">Date d'entree : </label></div>
                                 <div class="item"><input class="form-control" type="date" id="introduced"
                                                          name="introduced" onkeyup="VerifyDate(this)"
-                                                         value="" size="20"
+                                                         value="<c:out value="${computer.introduced}"/>" size="20"
                                                          maxlength="20"/></div>
                             </div>
                             <div class="form-group item-container">
                                 <div class="item"><label for="discontinued">Date de sortie : </label></div>
                                 <div class="item"><input class="form-control" type="date" id="discontinued"
-                                                         name="discontinued" onkeyup="VerifyDate(this)" value="" size="20"
+                                                         name="discontinued" onkeyup="VerifyDate(this)"
+                                                         value="<c:out value="${computer.discontinued}"/>" size="20"
                                                          maxlength="20"/></div>
                             </div>
                             <div class="item-container">
-                                <div class="item"><input type="submit" value="Valider" onsubmit="verifyAll()" class="btn-success"/></div>
+                                <div class="item"><input type="submit" value="Mettre a jour" onsubmit="verifyAll()" class="btn-success"/></div>
                             </div>
+                            <input type="hidden" name="form_use" value="update"/>
                         </form>
+                        <form id="computerDelete">
+                            <div class="item-container">
+                                <div class="item"><input type="submit" value="Supprimer"
+                                                         onsubmit="confirmDelete()" class="btn-success"/></div>
+                            </div>
+                            <input type="hidden" name="form_use" value="delete"/>
+                        </form>
+
                     </div>
                     <div class="panel-footer">
 
@@ -132,4 +149,3 @@ To change this template use File | Settings | File Templates.
 </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
