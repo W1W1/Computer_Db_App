@@ -1,6 +1,7 @@
 package Servlet;
 
 import Util.Company;
+import Util.DTO.CompanyDTO;
 import Util.DTO.ComputerDTO;
 import Util.SQLConnection.ManageCompany;
 import Util.SQLConnection.ManageComputer;
@@ -26,10 +27,12 @@ public class ListCompanyServlet extends HttpServlet {
         String searchEmpty = "Pas d'entreprises trouvées sous ce nom.";
         List<Company> companies;
 
-        if(request.getParameter("page")!=null) {
+        if(request.getParameter("page")!=null
+                && !request.getParameter("page").equals("")) {
             page = Integer.valueOf(request.getParameter("page"));
         }
-        if(request.getParameter("nbElements")!=null) {
+        if(request.getParameter("nbElements")!=null
+                && !request.getParameter("nbElements").equals("")) {
             nbElements = Integer.valueOf(request.getParameter("nbElements"));
         }
         if (request.getParameter("sE") == null) {
@@ -43,6 +46,12 @@ public class ListCompanyServlet extends HttpServlet {
         {
             companies = ManageCompany.searchCompany(request.getParameter("result"));
         }
+
+//        ArrayList<CompanyDTO> companyDTOs = new ArrayList<>();
+//        for (Company company:companies){
+//            companyDTOs.add(new CompanyDTO(company,ManageCompany.nbComputer(company.getId())));
+//        }
+
 
         request.setAttribute("page",page);
         request.setAttribute("nbElements",nbElements);

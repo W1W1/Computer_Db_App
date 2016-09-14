@@ -18,10 +18,11 @@ import java.util.List;
 public class GetComputerServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = 1;
-        if (request.getParameter("id")!=null)
+        if (request.getParameter("id")!=null
+                && !request.getParameter("id").equals(""))
         {
             System.out.printf("//"+request.getParameter("id")+"//");
-            id = Integer.valueOf(String.trim(request.getParameter("id")));
+            id = Integer.valueOf((request.getParameter("id")).trim());
         }
 
         Computer tmpComputer = ManageComputer.getComputer(id);

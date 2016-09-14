@@ -29,15 +29,23 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
 //   	color: $brand-custom;
 //   }
 // }
+#params{
+  padding-top: 1em;
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+  // background-color: darken($brand-danger,35%);
+  background-color: $react-darker;
+
+}
+
 
 a:hover{
   text-decoration: none;
 }
 
 .bandeau{
-  margin-top: 2em;
+  margin-top: 3em;
   background-color: $bloir-lighter;
-  padding-top: 3em;
   padding-bottom: 1em;
 }
 

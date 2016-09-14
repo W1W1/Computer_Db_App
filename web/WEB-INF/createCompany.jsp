@@ -32,6 +32,8 @@ To change this template use File | Settings | File Templates.
     <!--<script type='text/javascript' src="js/bootstrap.js"></script>-->
     <script type='text/javascript' src="../js/bootstrap.js"></script>
     <script type='text/javascript' src="js/bootstrap.js"></script>
+    <script type='text/javascript' src="js/inputVerification.js"></script>
+    <script type='text/javascript' src="../js/inputVerification.js"></script>
 
     <meta charset="utf-8"/>
     <title>Test</title>
@@ -103,3 +105,4 @@ To change this template use File | Settings | File Templates.
 
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

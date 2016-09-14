@@ -71,9 +71,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="item-container">
-                            <a class="item" href="${pageContext.request.contextPath}/getComputer?id=${id-1}">&lsaquo;</a>
+                            <a class="item" href="${pageContext.request.contextPath}/getComputer?id=${id-1}"><h1>&larr; Précédent</h1></a>
                             <h1 class="item">Information de l'ordinateur </h1>
-                            <a class="item" href="${pageContext.request.contextPath}/getComputer?id=${id+1}">&rsaquo;</a>
+                            <a class="item" href="${pageContext.request.contextPath}/getComputer?id=${id+1}"><h1>Suivant &rarr;</h1></a>
                         </div>
                     </div>
                     <div class="item-container">

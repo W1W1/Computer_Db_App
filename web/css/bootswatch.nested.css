@@ -5820,13 +5820,18 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+#params {
+  padding-top: 1em;
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+  background-color: #005666; }
+
 a:hover {
   text-decoration: none; }
 
 .bandeau {
-  margin-top: 2em;
+  margin-top: 3em;
   background-color: #4f7192;
-  padding-top: 3em;
   padding-bottom: 1em; }
 
 .description p {

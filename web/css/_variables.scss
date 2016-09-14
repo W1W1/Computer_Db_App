@@ -20,8 +20,10 @@ $bloir:                  #2B3E50 !default;
 $bloir-lighter:          lighten($bloir,20%) !default;
 
 $react:                  rgb(0, 216, 255) !default;
-$react-lighter:          lighten($react,20%) ! default;
+$react-light:            lighten($react,20%) ! default;
 $react-lighter:          lighten($react,35%) ! default;
+$react-darker:           darken($react,30%);
+$react-dark:             darken($react,20%);
 
 
 $brand-primary:         #0e0d2a !default;

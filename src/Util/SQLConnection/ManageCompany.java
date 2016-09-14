@@ -2,6 +2,7 @@ package Util.SQLConnection;
 
 
 import Util.Company;
+import Util.Computer;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
@@ -169,6 +170,32 @@ public class ManageCompany{
             if (tx != null) tx.rollback();
             e.printStackTrace();
             return null;
+        } finally {
+            session.close();
+        }
+    }
+
+    public static int nbComputer(long companyId) {
+        try {
+            factory = new Configuration().configure().buildSessionFactory();
+        } catch (Throwable ex) {
+            System.err.println("Failed to create sessionFactory object." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            String str ="FROM Computer WHERE company_id="+companyId;
+
+            int size = session.createQuery(str).list().size();
+
+            return size;
+
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return -1;
         } finally {
             session.close();
         }

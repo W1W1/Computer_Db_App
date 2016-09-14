@@ -24,7 +24,8 @@ public class GetCompanyServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Company> companies;
         int id = ID;
-        if (request.getParameter("id") != null) {
+        if (request.getParameter("id") != null
+                && !request.getParameter("id").equals("")) {
             id = Integer.valueOf(request.getParameter("id"));
         }
         Company company = ManageCompany.getCompany(id);
@@ -38,7 +39,7 @@ public class GetCompanyServlet extends HttpServlet {
         }
         request.setAttribute("company", company);
         request.setAttribute("computers", computerDTOs);
-//        request.setAttribute("Servlet.ListComputerServlet", computers);
+        request.setAttribute("id",id);
         this.getServletContext().getRequestDispatcher("/WEB-INF/getCompany.jsp").forward(request, response);
     }
 }

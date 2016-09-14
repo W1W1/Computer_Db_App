@@ -76,16 +76,9 @@ To change this template use File | Settings | File Templates.
     </div>
 </div>
 
-
-<!--Utilisation du Infinite Scroll pour limiter les chargements d'image
-distance mise à 0.5 pour mettre en exergue la fonctionalité,
-sa valeur en production serait de 2 pour qu'on ne touche jamais le bas de la page-->
 <div>
     <div class="container bandeau col-md-10 col-sm-12 col-md-offset-1">
-        <!--Paramètre de filtre et recherche avancés-->
-        <div class="row container-fluid recherche-avance">
-            <!--Ajout de ng-class pour lier l'ordre à la flèche allant vers le haut ou le bas
-            Utilisation de ng-click-->
+        <div class="row container-fluid"id="params">
             <div style="text-align: center">
                 <span style="color:red;"><strong><c:out value="${searchEmpty}"/></strong></span>
             </div>
@@ -97,7 +90,8 @@ sa valeur en production serait de 2 pour qu'on ne touche jamais le bas de la pag
                         size="30" maxlength="30" />
                     </div>
                     <div class="item"><label for="nbElements">Nombre d'ordinateurs par page : </label></div>
-                    <div class="item"><select id="nbElements" name="nbElements" form="page_specifications">
+                    <div class="item"><select id="nbElements" class="form-control"
+                                                                name="nbElements" form="page_specifications">
                         <c:choose>
                             <c:when test="${nbElements==25}">
                                 <option selected value="25">25</option>
@@ -139,7 +133,7 @@ sa valeur en production serait de 2 pour qu'on ne touche jamais le bas de la pag
         </div>
         <!--Affichage des Pokemon-->
         <c:forEach var="computer" items="${computers}">
-            <div class="col-sm-12 col-md-4 col-md-offset-1">
+            <div class="col-sm-12 col-md-6 ">
                 <div class="panel panel-default ">
                     <div class="panel-heading">
                         <div class="item-container">
@@ -147,7 +141,6 @@ sa valeur en production serait de 2 pour qu'on ne touche jamais le bas de la pag
                         </div>
                     </div>
 
-                    <!--Separator pour que les deux items soient écartés d'un certain espacement-->
                     <div class="separator-taille-poids"></div>
 
                     <a class="item-container"

@@ -27,17 +27,19 @@ public class ListComputerServlet extends HttpServlet {
         String searchEmpty = "Pas d'ordinateurs trouvés sous ce nom.";
         List<Computer> computers;
 
-        if (request.getParameter("page") != null) {
+        if (request.getParameter("page") != null
+                && !request.getParameter("page").equals("")) {
             page = Integer.valueOf(request.getParameter("page"));
         }
-        if (request.getParameter("nbElements") != null) {
+        if (request.getParameter("nbElements") != null
+                && !request.getParameter("nbElements").equals("")) {
             nbElements = Integer.valueOf(request.getParameter("nbElements"));
         }
         if (request.getParameter("sE") == null) {
             searchEmpty = "";
         }
         if (request.getParameter("result") == null) {
-            computers = ManageComputer.listComputer(nbElements, page);;
+            computers = ManageComputer.listComputer(nbElements, page);
         }
         else
         {
