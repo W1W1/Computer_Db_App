@@ -36,7 +36,6 @@ public class ListCompanyServlet extends HttpServlet {
             searchEmpty = "";
         }
         if (request.getParameter("result") == null) {
-            //TODO implement taking into account nbElement and page
             companies = ManageCompany.listCompany(nbElements,page);
         }
         else

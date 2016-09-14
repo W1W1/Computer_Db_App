@@ -1,7 +1,6 @@
 package Util.SQLConnection;
 
 
-import Util.Company;
 import Util.Computer;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
@@ -154,7 +153,42 @@ public class ManageComputer {
             session.close();
         }
     }
-    public void deleteComputer(Integer computerID) {
+
+    public static void updateComputer(Computer computer) {
+        try {
+            factory = new Configuration().configure().buildSessionFactory();
+        } catch (Throwable ex) {
+            System.err.println("Failed to create sessionFactory object." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+        Session session = factory.openSession();
+
+        try {
+            String hql = "UPDATE Computer set name = :name, "+
+                    "company_id = :company_id, "+
+                    "introduced = :introduced, "+
+                    "introduced = :introduced, "+
+                    "discontinued = :discontinued "+
+                    "WHERE id = :id";
+
+            org.hibernate.Query query = session.createQuery(hql);
+            query.setParameter("name", computer.getName());
+            query.setParameter("company_id", computer.getCompany().getId());
+            query.setParameter("introduced",computer.getIntroduced());
+            query.setParameter("discontinued",computer.getDiscontinued());
+            query.setParameter("id",computer.getId());
+
+            int result = query.executeUpdate();
+            System.out.println("Rows affected: " + result);
+
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    public static void deleteComputer(Integer computerID) {
         Session session = factory.openSession();
         Transaction tx = null;
         try {
@@ -210,4 +244,5 @@ public class ManageComputer {
             session.close();
         }
     }
+
 }

@@ -3,6 +3,7 @@ package Servlet;
 import Util.Company;
 import Util.Computer;
 import Util.DTO.ComputerDTO;
+import Util.Forms.CreateComputerForm;
 import Util.SQLConnection.ManageCompany;
 import Util.SQLConnection.ManageComputer;
 
@@ -22,6 +23,7 @@ public class UpdateComputerServlet extends HttpServlet {
         int id = 1;
         if (request.getParameter("id")!=null)
         {
+            System.out.printf("//"+request.getParameter("id")+"//");
             id = Integer.valueOf(request.getParameter("id"));
         }
 
@@ -44,20 +46,27 @@ public class UpdateComputerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String form=request.getParameter("form_use");
         int id = 1;
-        if (request.getParameter("id")!=null)
-        {
+        System.out.printf(request.getParameter("id"));
+        if (request.getParameter("id") != null &&
+                !request.getParameter("id").equals("")) {
             id = Integer.valueOf(request.getParameter("id"));
         }
 
         if(form.equals("update")){
             //update computer
 
+            CreateComputerForm compForm = new CreateComputerForm();
+
+            Computer computer = compForm.createComputer( request );
+
+            ManageComputer.updateComputer(computer);
+
             //go to now updated computer page
             String url= String.format(request.getContextPath() + "/getComputer?id=%d",id);
             response.sendRedirect(url);
         }else if(form.equals("delete")){
             //delete computer
-
+            ManageComputer.deleteComputer(id);
             //go to computer list
             String url= String.format(request.getContextPath() + "/listComputer");
             response.sendRedirect(url);
