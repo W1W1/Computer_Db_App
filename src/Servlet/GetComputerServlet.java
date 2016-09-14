@@ -21,8 +21,7 @@ public class GetComputerServlet extends HttpServlet {
         if (request.getParameter("id")!=null
                 && !request.getParameter("id").equals(""))
         {
-            System.out.printf("//"+request.getParameter("id")+"//");
-            id = Integer.valueOf((request.getParameter("id")).trim());
+            id = Integer.valueOf(request.getParameter("id"));
         }
 
         Computer tmpComputer = ManageComputer.getComputer(id);
@@ -36,4 +35,5 @@ public class GetComputerServlet extends HttpServlet {
         request.setAttribute("sdf", sdf);
         this.getServletContext().getRequestDispatcher("/WEB-INF/getComputer.jsp").forward(request, response);
     }
+
 }

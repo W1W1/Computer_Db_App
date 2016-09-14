@@ -98,6 +98,14 @@
                         <div class="item">${computer.discontinued }
                         </div>
                     </div>
+
+                    <div class="item-container">
+                        <a href="${pageContext.request.contextPath}/updateComputer?id=${id}">
+                            <div class="item"><input type="submit" value="Mettre a jour" class="btn-success"/></div>
+                        </a>
+
+                    </div>
+
                     <div class="panel-footer">
 
                     </div>

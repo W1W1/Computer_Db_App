@@ -16,7 +16,7 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Computer Creation</title>
+    <title>Computer Update</title>
     <!-- Material Design fonts -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 
@@ -84,7 +84,7 @@
 
                     </div>
                     <div class="panel-body">
-                        <form method="post" action="createComputer" id="computer_input">
+                        <form method="post" action="updateComputer" id="computer_input">
                             <div class="form-group item-container ">
                                 <div class="item"><label for="computerName">Nom de l'ordinateur : </label></div>
                                 <div class="item"><input id="computerName" type="text" onkeypress="verfyText(this)"
@@ -128,8 +128,9 @@
                                 <div class="item"><input type="submit" value="Mettre a jour" onsubmit="verifyAll()" class="btn-success"/></div>
                             </div>
                             <input type="hidden" name="form_use" value="update"/>
+                            <input type="hidden" name="id" value="<c:out value="${computer.id}"/>"/>
                         </form>
-                        <form id="computerDelete">
+                        <form method="post" id="computerDelete">
                             <div class="item-container">
                                 <div class="item"><input type="submit" value="Supprimer"
                                                          onsubmit="confirmDelete()" class="btn-success"/></div>
