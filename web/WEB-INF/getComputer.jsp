@@ -1,6 +1,4 @@
-<%@ page import="Util.Computer" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 -->
   <!--Created by IntelliJ IDEA.-->
   <!--User: Richard-DT-->
@@ -71,7 +69,14 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="item-container">
-                            <a class="item" href="${pageContext.request.contextPath}/getComputer?id=${id-1}"><h1>&larr; Précédent</h1></a>
+                            <c:choose>
+                                <c:when test="${id>1}">
+                                    <a class="item" href="${pageContext.request.contextPath}/getComputer?id=${id-1}"><h1>&larr; Précédent</h1></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a class="item"></a>
+                                </c:otherwise>
+                            </c:choose>
                             <h1 class="item">Information de l'ordinateur </h1>
                             <a class="item" href="${pageContext.request.contextPath}/getComputer?id=${id+1}"><h1>Suivant &rarr;</h1></a>
                         </div>

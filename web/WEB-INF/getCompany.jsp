@@ -77,7 +77,14 @@
                 <%--</div>--%>
                 <div class="panel-heading">
                     <div class="item-container">
-                        <a class="item" href="${pageContext.request.contextPath}/getCompany?id=${id-1}"><h1>&larr;</h1></a>
+                        <c:choose>
+                            <c:when test="${id>1}">
+                                <a class="item" href="${pageContext.request.contextPath}/getCompany?id=${id-1}"><h1>&larr;</h1></a>
+                            </c:when>
+                            <c:otherwise>
+                                <a class="item"></a>
+                            </c:otherwise>
+                        </c:choose>
                         <h1 class="item">${company.name} </h1>
                         <a class="item" href="${pageContext.request.contextPath}/getCompany?id=${id+1}"><h1>&rarr;</h1></a>
                     </div>
