@@ -17,6 +17,11 @@ import java.util.List;
 public class ManageComputer {
     private static SessionFactory factory;
 
+    /**
+     Permet la recuperation de l'ordinateur spécifié.
+     @param id Le numero d'identification de l'ordinateur.
+     @return L'ordinateur voulu.
+     */
     public static Computer getComputer(int id) {
         try {
             factory = new Configuration().configure().buildSessionFactory();
@@ -45,6 +50,10 @@ public class ManageComputer {
 
         }
     }
+    /**
+     Permet le listing des ordinateurs de la DB.
+     @return La liste de toute les ordinateurs.
+     */
     public static List<Computer> listComputer() {
         try {
             factory = new Configuration().configure().buildSessionFactory();
@@ -72,6 +81,12 @@ public class ManageComputer {
             session.close();
         }
     }
+    /**
+     Permet le listing des ordinateurs de la DB.
+     @param nbElements le nombre d'elements par page
+     @param page le numero de page que l'utilisateur demande
+     @return La liste de toute les ordinateurs limitée par les paramètres.
+     */
     public static List<Computer> listComputer(int nbElements, int page) {
         try {
             factory = new Configuration().configure().buildSessionFactory();
@@ -133,6 +148,10 @@ public class ManageComputer {
             session.close();
         }
     }
+    /**
+     Permet l'ajout de l'ordinateur spécifié.
+     @param computer L'ordinateur a mettre en memoire
+     */
     public static void addComputer(Computer computer) {
         try {
             factory = new Configuration().configure().buildSessionFactory();
@@ -188,6 +207,10 @@ public class ManageComputer {
         }
     }
 
+    /**
+     Permet la supression d'une ordinateur.
+     @param computerID Le numero d'identification à supprimer de la DB.
+     */
     public static void deleteComputer(Integer computerID) {
         Session session = factory.openSession();
         Transaction tx = null;
@@ -205,7 +228,9 @@ public class ManageComputer {
         }
     }
 
-
+    /**
+     Permet la recuperation de la dernière ordinateur ajouté.
+     */
     public static long getLastComputerId() {
         Session session = factory.openSession();
         Transaction tx = null;
@@ -222,7 +247,10 @@ public class ManageComputer {
             session.close();
         }
     }
-
+    /**
+     Permet la recuperation d'une liste d'ordinateur selon la racherche.
+     @param search variable contenant l'expression de recherche
+     */
     public static List<Computer> searchComputer(String search) {
         Session session = factory.openSession();
         Transaction tx = null;

@@ -16,6 +16,10 @@ import java.util.List;
  */
 public class ManageCompany{
     private static SessionFactory factory;
+    /**
+     Permet le listing des entreprises de la DB.
+     @return La liste de toute les entreprises.
+     */
     public static List<Company> listCompany( ){
         try{
             factory = new Configuration().configure().buildSessionFactory();
@@ -37,6 +41,11 @@ public class ManageCompany{
             session.close();
         }
     }
+    /**
+     Permet la recuperation de l'entreprise spécifié.
+     @param id Le numero d'identification de l'entrprise.
+     @return L'entreprise voulu.
+     */
     public static Company getCompany(int id) {
         try {
             factory = new Configuration().configure().buildSessionFactory();
@@ -67,6 +76,10 @@ public class ManageCompany{
             session.close();
         }
     }
+    /**
+     Permet l'ajout de l'entreprise spécifié.
+     @param company L'entrprise a mettre en memoire
+     */
     public static void addCompany(Company company) {
         try {
             factory = new Configuration().configure().buildSessionFactory();
@@ -88,6 +101,11 @@ public class ManageCompany{
             session.close();
         }
     }
+
+    /**
+     Permet la supression d'une entreprise.
+     @param companyID Le numero d'identification à supprimer de la DB.
+     */
     public static void deleteCompany(Integer companyID) {
         Session session = factory.openSession();
         Transaction tx = null;
@@ -104,6 +122,10 @@ public class ManageCompany{
             session.close();
         }
     }
+
+    /**
+     Permet la recuperation de la dernière entreprise ajouté.
+     */
     public static long getLastCompanyId() {
         Session session = factory.openSession();
         Transaction tx = null;
@@ -120,6 +142,10 @@ public class ManageCompany{
         }
     }
 
+    /**
+     Permet la recuperation d'une liste d'entreprise selon la racherche.
+     @param search variable contenant l'expression de recherche
+     */
     public static List<Company> searchCompany(String search) {
         Session session = factory.openSession();
         Transaction tx = null;
@@ -141,7 +167,12 @@ public class ManageCompany{
             session.close();
         }
     }
-
+    /**
+     Permet le listing des entreprises de la DB.
+     @param nbElements le nombre d'elements par page
+     @param page le numero de page que l'utilisateur demande
+     @return La liste de toute les entreprises limitée par les paramètres.
+     */
     public static List<Company> listCompany(int nbElements, int page) {
         try {
             factory = new Configuration().configure().buildSessionFactory();
@@ -174,7 +205,12 @@ public class ManageCompany{
             session.close();
         }
     }
-
+    /**
+     * LEGACY CODE
+     Prototype de recuperation du nombre d'ordianteur par entreprise
+     prototype fonctionel mais Erroné par la façon d'utiliser Hibernate,
+     manque de performance flagrant.
+     */
     public static int nbComputer(long companyId) {
         try {
             factory = new Configuration().configure().buildSessionFactory();

@@ -5,10 +5,19 @@ import Util.Company;
 
 import java.util.ArrayList;
 
+
 /**
- * Created by Richard-DT on 14/09/2016.
+ * @author Richard Dartus & Alexandre Woindrich
+ * @since 06/09/2016
+ * @version 1.0
  */
+
 public class CompanyDTO {
+    /**
+     * LEGACY CODE :
+     * Proof of Concept pour afficher le nombre d'ordinateur de l'entreprise.
+     * Abandonné par manque de moyen performant de récupération de ce nombre.
+     */
     private long id;
     private String name;
     private int nbComputer;

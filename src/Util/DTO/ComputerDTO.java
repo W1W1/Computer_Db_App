@@ -8,13 +8,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Richard-DT on 08/09/2016.
+ * @author Richard Dartus & Alexandre Woindrich
+ * @since 06/09/2016
+ * @version 1.0
  */
 public class ComputerDTO {
     /**
-     * @author Richard Dartus & Alexandre Woindrich
-     * @since 06/09/2016
-     * @version 1.0
+     * Computer DTO utilisé pour formatter un Computer pour son affichage.
+     * La date notament est changer pour son affichage dans l'HTML.
+     * Permet un code DRY dans les JSP.
+     *
+     * Possède les mêmes get/set
+     * Changementau niveau du Constructeur.
      */
 
     public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

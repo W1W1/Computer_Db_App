@@ -13,6 +13,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
 
+
+/**
+ * LEGACY CODE:
+ * Code à utiliser si Hibernate n'est pas intégré,
+ * Code d'aprentissage.
+ */
 public class SqlData {
 	private static String URL = "jdbc:mysql://localhost:3306/computer-database-db";
 	private static String USR = "root";
