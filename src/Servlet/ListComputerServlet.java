@@ -21,6 +21,21 @@ public class ListComputerServlet extends HttpServlet {
     public final static int PAGE = 1;
     public final static int NB_ELEMENTS = 25;
 
+    /**
+     * public void doGet : Permet de récupérer les éléments nécessaires au bon affichage de la liste des ordinateurs:
+     *                          * la liste des ordinateurs comprise dans la base de donnée, OU
+     *                          * la liste des ordinateurs correspondant au résultat d'une recherche
+     *                          * un message d'erreur si une recherche ne présente aucun résultat
+     *                          * le nombre d'éléménts à afficher par page
+     *                          * le numéro de la page a afficher
+     *                     Revoie sur la page de liste d'ordinateurs lorsque celle-ci est appelée
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int nbElements = NB_ELEMENTS;
         int page = PAGE;
@@ -62,6 +77,18 @@ public class ListComputerServlet extends HttpServlet {
         request.setAttribute("searchEmpty", searchEmpty);
         this.getServletContext().getRequestDispatcher("/WEB-INF/listComputer.jsp").forward(request, response);
     }
+
+    /**
+     * public void doPost : selon le formulaire appelé, cette méthode:
+     *                          * Modifiera la pagination de la page en changeant le nombre d'éléments par page et/ou
+     *                            la page selectionnée
+     *                          * effectuera la gestion de la recherche d'un ordinateur, en renvoyant des résultats
+     *                            selon si la recherche renvoie aucun, un, ou plusieurs résultats
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String form=request.getParameter("form_use");

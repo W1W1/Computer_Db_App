@@ -21,12 +21,29 @@ public class CreateCompanyServlet extends HttpServlet {
     public static final String VUE_SUCCES   = "/getCompany";
     public static final String VUE_FORM     = "/WEB-INF/createCompany.jsp";
 
+    /**
+     * public void doGet: Renvoie la page de création d'entreprise lorsque celle-ci est appelée. Aucun paramètre n'est nécessaire.
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* À la réception d'une requête GET, simple affichage du formulaire */
         this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
     }
 
+    /**
+     * public void doPost: récupération des données dans le formulaire, création de l'objet a créer dans la BDD si le formulaire
+     *         ne comporte pas d'erreurs
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 

@@ -21,8 +21,19 @@ import java.util.List;
 public class GetCompanyServlet extends HttpServlet {
     public static int ID = 1;
 
+    /**
+     * public void doGet: récupération des éléments nécessaires à l'affichage d'une entreprise:
+     *                         * id de l'entreprise a afficher
+     *                         * liste d'ordinateurs appartenant à cette entreprise
+     *                    revoie sur la page de création d'ordinateur lorsque celle-ci est appelée
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Company> companies;
         int id = ID;
         if (request.getParameter("id") != null
                 && !request.getParameter("id").equals("")) {
