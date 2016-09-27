@@ -94,8 +94,7 @@ To change this template use File | Settings | File Templates.
                                 <div class="item"><select id="companyName" class="form-control"
                                                           name="companyName" form="computer_input">
                                     <c:forEach var="company" items="${companies}">
-                                        <option value="<c:out value=" ${company.id}
-                                        "/>">
+                                        <option value="<c:out value="${company.id}"/>">
                                         <c:out
                                                 value="${company.name}"/>
                                         </option>
