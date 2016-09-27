@@ -118,12 +118,12 @@
                             <div class="form-group item-container">
                                 <div class="item"><label for="discontinued">Date de sortie : </label></div>
                                 <div class="item"><input class="form-control" type="date" id="discontinued"
-                                                         name="discontinued" onkeyup="VerifyDate(this)"
+                                                         name="discontinued"
                                                          value="<c:out value="${computer.discontinued}"/>" size="20"
                                                          maxlength="20"/></div>
                             </div>
                             <div class="item-container">
-                                <div class="item"><input type="submit" value="Mettre a jour" onsubmit="verifyAll()" class="btn-success"/></div>
+                                <div class="item"><input type="submit" value="Mettre a jour"  class="btn-success"/></div>
                             </div>
                             <input type="hidden" name="form_use" value="update"/>
                             <input type="hidden" name="id" value="<c:out value="${computer.id}"/>"/>

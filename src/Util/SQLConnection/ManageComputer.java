@@ -174,35 +174,16 @@ public class ManageComputer {
     }
 
     public static void updateComputer(Computer computer) {
-        try {
-            factory = new Configuration().configure().buildSessionFactory();
-        } catch (Throwable ex) {
-            System.err.println("Failed to create sessionFactory object." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
         Session session = factory.openSession();
-
-        try {
-            String hql = "UPDATE Computer set name = :name, "+
-                    "company_id = :company_id, "+
-                    "introduced = :introduced, "+
-                    "introduced = :introduced, "+
-                    "discontinued = :discontinued "+
-                    "WHERE id = :id";
-
-            org.hibernate.Query query = session.createQuery(hql);
-            query.setParameter("name", computer.getName());
-            query.setParameter("company_id", computer.getCompany().getId());
-            query.setParameter("introduced",computer.getIntroduced());
-            query.setParameter("discontinued",computer.getDiscontinued());
-            query.setParameter("id",computer.getId());
-
-            int result = query.executeUpdate();
-            System.out.println("Rows affected: " + result);
-
-        } catch (HibernateException e) {
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            session.update(computer);
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
             e.printStackTrace();
-        } finally {
+        }finally {
             session.close();
         }
     }

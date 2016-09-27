@@ -64,7 +64,7 @@ public class Computer {
 
 	public void setIntroduced(Date introduced) {this.introduced=introduced;}
 	public void setIntroduced(String introduced) throws ParseException{
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         this.introduced = sdf.parse(introduced);
     }
 
@@ -76,7 +76,7 @@ public class Computer {
 		this.discontinued = discontinued;
 	}
 	public void setDiscontinued(String discontinued) throws ParseException{
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         this.discontinued = sdf.parse(discontinued);
 
     }

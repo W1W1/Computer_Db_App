@@ -49,7 +49,7 @@ public class UpdateComputerServlet extends HttpServlet {
         if (tmpComputer != null) {
             computer = new ComputerDTO(ManageComputer.getComputer(id));
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         request.setAttribute("companies",companies);
         request.setAttribute("computer", computer);
@@ -85,7 +85,7 @@ public class UpdateComputerServlet extends HttpServlet {
             CreateComputerForm compForm = new CreateComputerForm();
 
             Computer computer = compForm.createComputer( request );
-
+            computer.setId(id);
             ManageComputer.updateComputer(computer);
 
             //go to now updated computer page

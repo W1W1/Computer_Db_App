@@ -65,11 +65,10 @@ public class CreateComputerForm {
         } catch (Exception e) {
             setErreur( CHAMP_INTRODUCED, e.getMessage() );
         }
-//        try {
-//            computer.setDiscontinued(discontinued);
-//        } catch (Exception e) {
-//            setErreur( CHAMP_DISCONTINUED, e.getMessage() );
-//        }
+        try {
+            computer.setDiscontinued(discontinued);
+        } catch (Exception e) {
+        }
 
         if ( erreurs.isEmpty() ) {
             resultat = "Succès de la création de l'entreprise.";
