@@ -173,31 +173,6 @@ public class ManageComputer {
         }
     }
 
-<<<<<<< Updated upstream
-    public static void updateComputer(Computer computer) {
-=======
-    public static void updateComputerV1(Computer computer) {
-        try {
-            factory = new Configuration().configure().buildSessionFactory();
-        } catch (Throwable ex) {
-            System.err.println("Failed to create sessionFactory object." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
->>>>>>> Stashed changes
-        Session session = factory.openSession();
-        Transaction tx = null;
-        try{
-            tx = session.beginTransaction();
-            session.update(computer);
-            tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
-            e.printStackTrace();
-        }finally {
-            session.close();
-        }
-    }
-
     public static void updateComputer(Computer computer) {
         try {
             factory = new Configuration().configure().buildSessionFactory();
@@ -212,7 +187,6 @@ public class ManageComputer {
             session.beginTransaction();
             session.update(computer);
             session.getTransaction().commit();
-            session.close();
 
         } catch (HibernateException e) {
             e.printStackTrace();

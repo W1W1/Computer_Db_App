@@ -33,7 +33,7 @@
     <div class="container-fluid" >
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            <a href="${pageContext.request.contextPath}/home" class="navbar-brand" >Computer Database</a>
+            <a class="navbar-brand" >Computer Database</a>
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <!--Initialisation de la variable de lien aléatoire
