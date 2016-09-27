@@ -213,11 +213,12 @@ public class ManageComputer {
      */
     public static void deleteComputer(Integer computerID) {
         Session session = factory.openSession();
+        long l = computerID;
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
             Computer computer =
-                    (Computer) session.get(Computer.class, computerID);
+                    (Computer) session.get(Computer.class, l);
             session.delete(computer);
             tx.commit();
         } catch (HibernateException e) {

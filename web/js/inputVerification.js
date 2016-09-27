@@ -63,8 +63,9 @@ function VerifyDate(date) {
     }
     return false;
 }
-function VerifyAll() {
+function VerifyAll(nb) {
     var inputs = this.getElementsByClassName("input");
+    i = 0;
     for (input in inputs){
         if(input.type == "text"){
             if(verfyText(input)==false){

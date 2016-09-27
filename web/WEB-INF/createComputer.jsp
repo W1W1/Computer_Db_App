@@ -112,11 +112,11 @@ To change this template use File | Settings | File Templates.
                             <div class="form-group item-container">
                                 <div class="item"><label for="discontinued">Date de sortie : </label></div>
                                 <div class="item"><input class="form-control" type="date" id="discontinued"
-                                                         name="discontinued" onkeyup="VerifyDate(this)" value="" size="20"
+                                                         name="discontinued" value="" size="20"
                                                          maxlength="20"/></div>
                             </div>
                             <div class="item-container">
-                                <div class="item"><input type="submit" value="Valider" onsubmit="verifyAll()" class="btn-success"/></div>
+                                <div class="item"><input type="submit" value="Valider"  class="btn-success"/></div>
                             </div>
                         </form>
                     </div>
