@@ -59,20 +59,59 @@
         </div>
     </div>
 </div>
-<div class="container-fluid main" id="Top">
-    <div class="container cadre" >
-        <div class="row">
-            <div class="col-sm-12">
-
-                bla
-                blabla
-                blablabla
-                blabla
-                bla
+<div class="container-fluid " id="Top">
+    <div class="container bandeau">
+        <!--Informations sur l'entreprise-->
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"></div>
+                <div class="panel-body">
+                    <h3>A PROPOS</h3>
+                </div>
+                <div class="panel-footer"></div>
+            </div>
+            <div>
+                <h4>Contexte</h4>
+                <p>Projet réalisé dans le cadre d'un cours de programmation JAVA/JEE</p>
+                <h4>Technologies utilisées</h4>
+                <ul>
+                    <li>JEE</li>
+                    <li>Hibernate</li>
+                    <li>SaSS</li>
+                </ul>
+                </br></br>
+                <h4>Enoncé du projet</h4>
+                </br>
+                <h5>Problématique</h5>
+                <p>Un client vous a demandé de développer une application web pour la gestion de son parc d'ordinateur. </p>
+                <p>Il vous fournit une base de données et un template sur lequel s'appuyer pour tout ce qui est graphique.</p>
+                </br>
+                <p>Il veut pouvoir :</p>
+                <ul>
+                    <li>Lister les ordinateurs</li>
+                    <li>Ajouter un ordinateur</li>
+                </ul>
+                </br>
+                <p>Les ordinateur ont un nom, une date d'entrée dans le parc de l'entreprise et une date de sortie s'ils ne sont plus présents. </p>
+                <p>Ils ont aussi une compagnie, qui correspond à leur constructeur.</p>
+                <p>Il vous a prévenu aussi que la base de données n'est pas consistante : il faudra dons faire attention aux données.</p>
+                </br>
+                <h5>Contraintes</h5>
+                <ul>
+                    <li>L'application que vous allez développer doit être en Java/JEE et doit utiliser les technologies correspondantes.</li>
+                    <li>Vous devrez proposer une architecture n-tier et utiliser les tags JSTL dans les JSP.</li>
+                    <li>Vous avez le choix pour l'accès à la BDD et pourrez utiliser soit JDBC soit Hibernate.</li>
+                </ul>
+                </br>
+                <h5>Bonus</h5>
+                <ul>
+                    <p>Vous pourrez proposer des fontionnalités supplémentaires utiles dans le cadre de la problématique.</p>
+                    <p>Vous pourrez aussi présenter une autre interface que celle proposée.</p>
+                    <p>Si vous avez une autre idée, envoyez moi un mail à malbert@excilys.com et nous verrons ensemble si c'est une bonne idée et si vous pourrez la faire.</p>
+                </ul>
 
             </div>
         </div>
-
     </div>
 </div>
 </div>
