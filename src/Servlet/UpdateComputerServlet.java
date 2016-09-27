@@ -19,6 +19,21 @@ import java.util.List;
  * Created by Alex on 9/13/2016.
  */
 public class UpdateComputerServlet extends HttpServlet {
+
+    /**
+     * public void doGet: Permet de récupérer les éléments nécessaires à le mise a jour d'un ordinateur :
+     *                          * id de l'ordinateur à mettre a jour
+     *                          * les données actuelles de l'ordinateur
+     *                          * la liste des entreprises dans la base de donnée
+     *                          * le format de la date à afficher
+     *                    Revoie sur la page de mise a jour d'un ordinateur lorsque celle-ci est appelée
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = 1;
         if (request.getParameter("id")!=null)
@@ -42,6 +57,18 @@ public class UpdateComputerServlet extends HttpServlet {
         request.setAttribute("sdf", sdf);
         this.getServletContext().getRequestDispatcher("/WEB-INF/updateComputer.jsp").forward(request, response);
     }
+
+    /**
+     * public void doPost : selon le formulaire appelé, cette méthode:
+     *                          * Met a jour l'ordinateur dans la base de données avec les nouvelles informations
+     *                            rentrées dans le formulaire
+     *                          * supprime l'ordinateur de la base de données
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String form=request.getParameter("form_use");

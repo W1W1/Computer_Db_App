@@ -24,6 +24,15 @@ public class CreateComputerServlet extends HttpServlet {
     public static final String VUE_SUCCES   = "/getComputer";
     public static final String VUE_FORM     = "/WEB-INF/createComputer.jsp";
 
+    /**
+     * public void doGet: récupération de la liste d'entreprises afin que celle-ci puisse être utilisée dans le
+     *                    formulaire revoie sur la page de création d'ordinateur lorsque celle-ci est appelée
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* À la réception d'une requête GET, simple affichage du formulaire */
@@ -34,6 +43,15 @@ public class CreateComputerServlet extends HttpServlet {
         this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
     }
 
+    /**
+     * public void doPost: récupération des données dans le formulaire, création de l'objet a créer dans la BDD si
+     *                     le formulaire ne comporte pas d'erreurs
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 

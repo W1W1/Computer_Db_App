@@ -21,6 +21,21 @@ public class ListCompanyServlet extends HttpServlet {
     public final static int PAGE = 1;
     public final static int NB_ELEMENTS= 50;
 
+    /**
+     * public void doGet : Permet de récupérer les éléments nécessaires au bon affichage de la liste des entreprises:
+     *                          * la liste des entreprises comprise dans la base de donnée, OU
+     *                          * la liste des entreprises correspondant au résultat d'une recherche
+     *                          * un message d'erreur si une recherche ne présente aucun résultat
+     *                          * le nombre d'éléménts à afficher par page
+     *                          * le numéro de la page a afficher
+     *                     Revoie sur la page de liste d'entreprises lorsque celle-ci est appelée
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int nbElements = NB_ELEMENTS;
         int page = PAGE;
@@ -58,6 +73,19 @@ public class ListCompanyServlet extends HttpServlet {
         request.setAttribute("searchEmpty", searchEmpty);
         this.getServletContext().getRequestDispatcher("/WEB-INF/listCompany.jsp").forward(request, response);
     }
+
+    /**
+     * public void doPost : selon le formulaire appelé, cette méthode:
+     *                          * Modifiera la pagination de la page en changeant le nombre d'éléments par page et/ou
+     *                            la page selectionnée
+     *                          * effectuera la gestion de la recherche d'une entreprise, en renvoyant des résultats
+     *                            selon si la recherche renvoie aucun, un, ou plusieurs résultats
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         String form=request.getParameter("form_use");

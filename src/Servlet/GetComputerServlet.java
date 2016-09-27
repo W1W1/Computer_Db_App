@@ -16,6 +16,18 @@ import java.util.List;
  * Created by Richard-DT on 08/09/2016.
  */
 public class GetComputerServlet extends HttpServlet {
+
+    /**
+     * public void doGet: récupération des l'id de l'ordinateur à afficher
+     *                    mise en forme de l'objet ordinateur sous forme de DTO
+     *                    revoie sur la page de création d'ordinateur lorsque celle-ci est appelée
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = 1;
         if (request.getParameter("id")!=null
