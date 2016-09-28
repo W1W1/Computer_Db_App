@@ -66,11 +66,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading"></div>
                 <div class="panel-body">
-                    <h3>A PROPOS</h3>
+                    <h3 style="text-align: center">A PROPOS</h3>
                 </div>
                 <div class="panel-footer"></div>
             </div>
-            <div>
+            <div class="container col-xs-12">
                 <h4>Contexte</h4>
                 <p>Projet réalisé dans le cadre d'un cours de programmation JAVA/JEE</p>
                 <h4>Technologies utilisées</h4>
